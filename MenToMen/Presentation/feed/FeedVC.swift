@@ -17,6 +17,7 @@ class FeedVC:UIViewController {
     func attribute() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    
     func setup() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false

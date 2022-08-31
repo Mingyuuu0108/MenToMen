@@ -26,7 +26,7 @@
 		5266C98828BCCCA500B61B3B /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		5266C98B28BCCCD900B61B3B /* AddFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedVC.swift; sourceTree = "<group>"; };
 		5293EBFA28BA7816003A8C06 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
-		52AD0BE528BDE9AC00B5CC3F /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenToMen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52AD0BE528BDE9AC00B5CC3F /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MenToMen.app; path = "/Users/leemingyu/Desktop/coding/Memn_To_Men_V1/build/Debug-iphoneos/MenToMen.app"; sourceTree = "<absolute>"; };
 		52EA581E28B8413B007D7283 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		52EA582028B87629007D7283 /* webVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webVC.swift; sourceTree = "<group>"; };
 		52EA582328B88568007D7283 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -109,7 +109,6 @@
 			children = (
 				93C8265628B4CFA500B46604 /* MenToMen */,
 				8EB2153CEE5A7073EA067A2F /* Pods */,
-				52AD0BE528BDE9AC00B5CC3F /* MenToMen.app */,
 			);
 			sourceTree = "<group>";
 		};
