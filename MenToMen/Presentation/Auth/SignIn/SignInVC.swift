@@ -37,32 +37,22 @@ class SignInVC: UIViewController {
     }
     
     private let signUpButton = UIButton().then {
-        $0.backgroundColor = .black
-        $0.setTitle("회원가입", for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
-        $0.addTarget(self, action: #selector(TabSignUpButton), for: .touchUpInside)
-    }
-    
-    private let authSignInButton = UIButton().then {
         $0.backgroundColor = UIColor(red: 0.4196, green: 0.498, blue: 0.949, alpha: 0.5)
-        $0.setTitle("Dauth로 로그인하기!", for: .normal)
+        $0.setTitle("회원가입", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         $0.titleLabel?.textAlignment = .center
         $0.layer.cornerRadius = 5.0
-        $0.addTarget(self, action: #selector(DauthSignInButton), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(tabSignUpButton), for: .touchUpInside)
     }
     
     @objc func TabSignInButton() {
         
-//        let id = idTextField.text
-//        let pw = pwTextField.text
+        let id = idTextField.text
+        let pw = pwTextField.text
+        print(id, pw)
     }
     
-    @objc func TabSignUpButton() {
-        print("회원가입이 완료되었습니다!")
-    }
-    
-    @objc func DauthSignInButton() {
+    @objc func tabSignUpButton() {
         let rootVC = UIViewController()
         let VC = UINavigationController(rootViewController: rootVC)
         present(VC, animated: true)
@@ -90,7 +80,7 @@ class SignInVC: UIViewController {
             logoImageView,
             textFieldSV,
             signInButton,
-            authSignInButton,
+            signUpButton,
         ].forEach{ self.view.addSubview($0) }
         
         logoImageView.snp.makeConstraints{
@@ -106,7 +96,7 @@ class SignInVC: UIViewController {
             $0.right.equalToSuperview().offset(-40)
         }
         
-        self.authSignInButton.snp.makeConstraints {
+        self.signUpButton.snp.makeConstraints {
             $0.top.equalTo(signInButton.snp.bottom).offset(5.0)
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)

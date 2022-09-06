@@ -9,52 +9,100 @@ import UIKit
 import SnapKit
 import Then
 
-class FeedVC:UIViewController {
+class FeedVC:UIViewController, UITableViewDelegate {
     
-    let testArr = ["a", "b", "c", "d", "a", "b", "c", "d"]
-    let tableView = UITableView()
-
-    func attribute() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    
-    func setup() {
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    }
-
-    }
-
-    extension FeedVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return testArr.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.snp.makeConstraints { (make) in
+            make.left.equalTo(view).offset(20)
+            make.right.equalTo(view).offset(-20)
+            make.top.equalTo(view).offset(40) }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
-        cell.textLabel?.text = testArr[indexPath.row]
-                
-        return cell
-    }
+        return tableView
+        
+    }()
     
+    var userData: [UserData] = []
+    let tagImages = ["iOS", "Server","ADOS","Web","Design","iOS", "Server","ADOS","Web","Design"]
+    let userNames = ["이민규", "김종윤","이지민","이서코","이재건","이민규", "김종윤","이지민","이서코","이재건"]
+    let contents = ["swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요.",
+                    "아 디자인 하기 싫다~~ 몬스터나 빨아야지~~ 야 이민규 홈마트 가자 오늘 점심 편의점야무지다~",
+                    "안드로이드 한번 배워보고 싶은데 첫 걸음을 도와주실 선배님을 구하지 않습니다.",
+                    "예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다",
+                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다",
+                    "swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요.",
+                    "아 디자인 하기 싫다~~ 몬스터나 빨아야지~~ 야 이민규 홈마트 가자 오늘 점심 편의점야무지다~",
+                    "안드로이드 한번 배워보고 싶은데 첫 걸음을 도와주실 선배님을 구하지 않습니다.",
+                    "예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다",
+                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다"
+    ]
+
+    
+    func makeData() {
+        let len = tagImages.count
+        
+        for i in 0 ... (len - 1) {
+            userData.append(UserData.init(
+                tagImage: UIImage(named: tagImages[i])!,
+                userName: userNames[i],
+                content: contents[i]
+            ))
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         setupNavigationBar()
+        setupView()
         
+        makeData()
+        configure()
+        addSubView()
+        autoLayout()
+        
+    }
+    private func configure() {
+        tableView.dataSource = self
+        tableView.rowHeight = 100
+    }
+        
+    private func addSubView() {
+        view.addSubview(tableView)
+    }
+    
+    private func setupView() {tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         
-        attribute()
-        setup()
     }
     
+    private func autoLayout() {
+        let guide = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: guide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
+            ])
+        }
+}
+
+extension FeedVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userData.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+        cell.tagImage.image = userData[indexPath.row].tagImage ?? UIImage(named: "default")
+        cell.userName.text = userData[indexPath.row].userName ?? ""
+        cell.content.text = userData[indexPath.row].content ?? ""
+
+        return cell
+    }
 }
 
 //피드 네비게이션바 뷰

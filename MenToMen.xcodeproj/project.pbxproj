@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5266C98928BCCCA500B61B3B /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C98828BCCCA500B61B3B /* FeedVC.swift */; };
-		5266C98C28BCCCD900B61B3B /* AddFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C98B28BCCCD900B61B3B /* AddFeedVC.swift */; };
 		5293EBFB28BA7816003A8C06 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EBFA28BA7816003A8C06 /* AddVC.swift */; };
+		52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D95A3828BF5E82007F7B2F /* CustomCell.swift */; };
 		52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA581E28B8413B007D7283 /* TabBarController.swift */; };
 		52EA582128B87629007D7283 /* webVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA582028B87629007D7283 /* webVC.swift */; };
 		52EA582428B88568007D7283 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA582328B88568007D7283 /* SignUpVC.swift */; };
@@ -24,9 +24,9 @@
 		25F49518E24E2E3E0BC5F7A6 /* Pods-MenToMen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenToMen.release.xcconfig"; path = "Target Support Files/Pods-MenToMen/Pods-MenToMen.release.xcconfig"; sourceTree = "<group>"; };
 		4BA2227F3CBE68C87F040E18 /* Pods-MenToMen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenToMen.debug.xcconfig"; path = "Target Support Files/Pods-MenToMen/Pods-MenToMen.debug.xcconfig"; sourceTree = "<group>"; };
 		5266C98828BCCCA500B61B3B /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
-		5266C98B28BCCCD900B61B3B /* AddFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedVC.swift; sourceTree = "<group>"; };
+		5281CF6328C7669000584BE1 /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MenToMen.app; path = "/Users/leemingyu/Desktop/coding/MenToMen-codebase/build/Debug-iphoneos/MenToMen.app"; sourceTree = "<absolute>"; };
 		5293EBFA28BA7816003A8C06 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
-		52AD0BE528BDE9AC00B5CC3F /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MenToMen.app; path = "/Users/leemingyu/Desktop/coding/Memn_To_Men_V1/build/Debug-iphoneos/MenToMen.app"; sourceTree = "<absolute>"; };
+		52D95A3828BF5E82007F7B2F /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52EA581E28B8413B007D7283 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		52EA582028B87629007D7283 /* webVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webVC.swift; sourceTree = "<group>"; };
 		52EA582328B88568007D7283 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				5266C98828BCCCA500B61B3B /* FeedVC.swift */,
-				5266C98B28BCCCD900B61B3B /* AddFeedVC.swift */,
+				52D95A3828BF5E82007F7B2F /* CustomCell.swift */,
 			);
 			path = feed;
 			sourceTree = "<group>";
@@ -144,7 +144,7 @@
 			);
 			name = MenToMen;
 			productName = MenToMen;
-			productReference = 52AD0BE528BDE9AC00B5CC3F /* MenToMen.app */;
+			productReference = 5281CF6328C7669000584BE1 /* MenToMen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -241,7 +241,7 @@
 			files = (
 				5293EBFB28BA7816003A8C06 /* AddVC.swift in Sources */,
 				52EA582128B87629007D7283 /* webVC.swift in Sources */,
-				5266C98C28BCCCD900B61B3B /* AddFeedVC.swift in Sources */,
+				52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */,
 				93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */,
 				52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */,
 				93C8265A28B4CFA500B46604 /* SceneDelegate.swift in Sources */,
