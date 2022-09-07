@@ -16,7 +16,6 @@
 		52EB706228B4D13000E5FD28 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB706128B4D13000E5FD28 /* SignInVC.swift */; };
 		93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8265728B4CFA500B46604 /* AppDelegate.swift */; };
 		93C8265A28B4CFA500B46604 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8265928B4CFA500B46604 /* SceneDelegate.swift */; };
-		93C8266128B4CFA600B46604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93C8266028B4CFA600B46604 /* Assets.xcassets */; };
 		93C8266428B4CFA600B46604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C8266228B4CFA600B46604 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		52EB706128B4D13000E5FD28 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		93C8265728B4CFA500B46604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93C8265928B4CFA500B46604 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		93C8266028B4CFA600B46604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93C8266328B4CFA600B46604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93C8266528B4CFA600B46604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +115,6 @@
 			children = (
 				93C8265728B4CFA500B46604 /* AppDelegate.swift */,
 				93C8265928B4CFA500B46604 /* SceneDelegate.swift */,
-				93C8266028B4CFA600B46604 /* Assets.xcassets */,
 				93C8266228B4CFA600B46604 /* LaunchScreen.storyboard */,
 				93C8266528B4CFA600B46604 /* Info.plist */,
 				52EB707128B4D47100E5FD28 /* Presentation */,
@@ -186,7 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C8266428B4CFA600B46604 /* LaunchScreen.storyboard in Resources */,
-				93C8266128B4CFA600B46604 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
