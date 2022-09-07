@@ -53,10 +53,11 @@ class SignInVC: UIViewController {
     }
     
     @objc func tabSignUpButton() {
+        
         let rootVC = UIViewController()
         let VC = UINavigationController(rootViewController: rootVC)
-        present(VC, animated: true)
-        
+//        VC.modalPresentationStyle = .fullScreen
+        self.present(VC, animated: true)
     }
     
     override func viewDidLoad() {

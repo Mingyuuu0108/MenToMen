@@ -1,14 +1,8 @@
-//
-//  feedVC.swift
-//  MenToMen
-//
-//  Created by 이민규 on 2022/08/29.
-//
-
 import UIKit
 import SnapKit
 import Then
 
+//피드 뷰컨트롤러
 class FeedVC:UIViewController, UITableViewDelegate {
     
     private lazy var tableView: UITableView = {
@@ -23,20 +17,20 @@ class FeedVC:UIViewController, UITableViewDelegate {
         return tableView
         
     }()
-    
+    //더미데이터
     var userData: [UserData] = []
     let tagImages = ["iOS", "Server","ADOS","Web","Design","iOS", "Server","ADOS","Web","Design"]
     let userNames = ["이민규", "김종윤","이지민","이서코","이재건","이민규", "김종윤","이지민","이서코","이재건"]
     let contents = ["swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요.",
                     "아 디자인 하기 싫다~~ 몬스터나 빨아야지~~ 야 이민규 홈마트 가자 오늘 점심 편의점야무지다~",
                     "안드로이드 한번 배워보고 싶은데 첫 걸음을 도와주실 선배님을 구하지 않습니다.",
-                    "예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다",
-                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다",
+                    "예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다",
+                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다",
                     "swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요.",
                     "아 디자인 하기 싫다~~ 몬스터나 빨아야지~~ 야 이민규 홈마트 가자 오늘 점심 편의점야무지다~",
                     "안드로이드 한번 배워보고 싶은데 첫 걸음을 도와주실 선배님을 구하지 않습니다.",
-                    "예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다",
-                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다ㅠㅠ 급합니다"
+                    "예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다",
+                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다"
     ]
 
     
@@ -62,7 +56,6 @@ class FeedVC:UIViewController, UITableViewDelegate {
         configure()
         addSubView()
         autoLayout()
-        
     }
     private func configure() {
         tableView.dataSource = self

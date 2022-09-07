@@ -12,12 +12,13 @@ class CustomCell: UITableViewCell {
     
     let userName = UILabel().then { UILabel in
         UILabel.translatesAutoresizingMaskIntoConstraints = false
-        UILabel.font = UIFont.boldSystemFont(ofSize: 12)
+        UILabel.font = UIFont.boldSystemFont(ofSize: 18)
     }
     
     let content = UILabel().then { UILabel in
         UILabel.translatesAutoresizingMaskIntoConstraints = false
         UILabel.font = UIFont.boldSystemFont(ofSize: 14)
+        UILabel.numberOfLines = 0 //텍스트가 셀을 넘었을 떄 줄바꿈을 해주는 코드
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -40,21 +41,33 @@ class CustomCell: UITableViewCell {
     
     private func autoLayout() {
         
+        userName.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.left.equalTo(tagImage.snp.right).offset(10)
+        }//유저 이름의 레이아웃
+        
+        content.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalTo(tagImage.snp.right).offset(300)
+            $0.bottom.equalToSuperview().offset(20)
+        }//내용의 레이아웃
+        
         NSLayoutConstraint.activate([
             tagImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tagImage.widthAnchor.constraint(equalToConstant: 36),
             tagImage.heightAnchor.constraint(equalToConstant: 54),
             tagImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             
-            userName.topAnchor.constraint(equalTo: self.topAnchor),
-            userName.leadingAnchor.constraint(equalTo: tagImage.trailingAnchor, constant: CGFloat(10)),
-            userName.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                        
-            content.topAnchor.constraint(equalTo: userName.bottomAnchor),
-            content.leadingAnchor.constraint(equalTo: tagImage.trailingAnchor, constant: CGFloat(5)),
-            content.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            content.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            content.heightAnchor.constraint(equalTo: userName.heightAnchor),
+//            userName.topAnchor.constraint(equalTo: self.topAnchor),
+//            userName.leadingAnchor.constraint(equalTo: tagImage.trailingAnchor, constant: CGFloat(10)),
+//            userName.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//
+//            content.topAnchor.constraint(equalTo: userName.bottomAnchor),
+//            content.leadingAnchor.constraint(equalTo: tagImage.trailingAnchor, constant: CGFloat(5)),
+//            content.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//            content.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+//            content.heightAnchor.constraint(equalTo: userName.heightAnchor),
         ])
     }
     
