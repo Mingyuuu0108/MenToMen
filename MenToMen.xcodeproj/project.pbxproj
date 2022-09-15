@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5266C98928BCCCA500B61B3B /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C98828BCCCA500B61B3B /* FeedVC.swift */; };
+		5281CF6B28C8BF6100584BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6628C8BF6000584BE1 /* Assets.xcassets */; };
+		5281CF6C28C8BF6100584BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6828C8BF6000584BE1 /* Assets.xcassets */; };
+		5281CF6D28C8BF6100584BE1 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6928C8BF6000584BE1 /* appstore.png */; };
+		5281CF6E28C8BF6100584BE1 /* playstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6A28C8BF6000584BE1 /* playstore.png */; };
 		5293EBFB28BA7816003A8C06 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EBFA28BA7816003A8C06 /* AddVC.swift */; };
 		52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D95A3828BF5E82007F7B2F /* CustomCell.swift */; };
 		52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA581E28B8413B007D7283 /* TabBarController.swift */; };
-		52EA582128B87629007D7283 /* webVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA582028B87629007D7283 /* webVC.swift */; };
 		52EA582428B88568007D7283 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA582328B88568007D7283 /* SignUpVC.swift */; };
 		52EB706228B4D13000E5FD28 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB706128B4D13000E5FD28 /* SignInVC.swift */; };
 		93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8265728B4CFA500B46604 /* AppDelegate.swift */; };
@@ -22,12 +25,15 @@
 /* Begin PBXFileReference section */
 		25F49518E24E2E3E0BC5F7A6 /* Pods-MenToMen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenToMen.release.xcconfig"; path = "Target Support Files/Pods-MenToMen/Pods-MenToMen.release.xcconfig"; sourceTree = "<group>"; };
 		4BA2227F3CBE68C87F040E18 /* Pods-MenToMen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenToMen.debug.xcconfig"; path = "Target Support Files/Pods-MenToMen/Pods-MenToMen.debug.xcconfig"; sourceTree = "<group>"; };
+		521B374128D1BD9B00F1DAE4 /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenToMen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5266C98828BCCCA500B61B3B /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
-		5281CF6328C7669000584BE1 /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MenToMen.app; path = "/Users/leemingyu/Desktop/coding/MenToMen-codebase/build/Debug-iphoneos/MenToMen.app"; sourceTree = "<absolute>"; };
+		5281CF6628C8BF6000584BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Assets.xcassets; sourceTree = "<group>"; };
+		5281CF6828C8BF6000584BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5281CF6928C8BF6000584BE1 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
+		5281CF6A28C8BF6000584BE1 /* playstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playstore.png; sourceTree = "<group>"; };
 		5293EBFA28BA7816003A8C06 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		52D95A3828BF5E82007F7B2F /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52EA581E28B8413B007D7283 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		52EA582028B87629007D7283 /* webVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webVC.swift; sourceTree = "<group>"; };
 		52EA582328B88568007D7283 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		52EB706128B4D13000E5FD28 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		93C8265728B4CFA500B46604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +60,17 @@
 				52D95A3828BF5E82007F7B2F /* CustomCell.swift */,
 			);
 			path = feed;
+			sourceTree = "<group>";
+		};
+		5281CF6728C8BF6000584BE1 /* 앱 아이콘 */ = {
+			isa = PBXGroup;
+			children = (
+				5281CF6828C8BF6000584BE1 /* Assets.xcassets */,
+				5281CF6928C8BF6000584BE1 /* appstore.png */,
+				5281CF6A28C8BF6000584BE1 /* playstore.png */,
+			);
+			name = "앱 아이콘";
+			path = "../../../앱 아이콘";
 			sourceTree = "<group>";
 		};
 		52EA582228B884EF007D7283 /* SignUp */ = {
@@ -88,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				52EB706128B4D13000E5FD28 /* SignInVC.swift */,
-				52EA582028B87629007D7283 /* webVC.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -107,6 +123,7 @@
 			children = (
 				93C8265628B4CFA500B46604 /* MenToMen */,
 				8EB2153CEE5A7073EA067A2F /* Pods */,
+				521B374128D1BD9B00F1DAE4 /* MenToMen.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +133,8 @@
 				93C8265728B4CFA500B46604 /* AppDelegate.swift */,
 				93C8265928B4CFA500B46604 /* SceneDelegate.swift */,
 				93C8266228B4CFA600B46604 /* LaunchScreen.storyboard */,
+				5281CF6728C8BF6000584BE1 /* 앱 아이콘 */,
+				5281CF6628C8BF6000584BE1 /* Assets.xcassets */,
 				93C8266528B4CFA600B46604 /* Info.plist */,
 				52EB707128B4D47100E5FD28 /* Presentation */,
 			);
@@ -141,7 +160,7 @@
 			);
 			name = MenToMen;
 			productName = MenToMen;
-			productReference = 5281CF6328C7669000584BE1 /* MenToMen.app */;
+			productReference = 521B374128D1BD9B00F1DAE4 /* MenToMen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -182,7 +201,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5281CF6B28C8BF6100584BE1 /* Assets.xcassets in Resources */,
+				5281CF6D28C8BF6100584BE1 /* appstore.png in Resources */,
+				5281CF6C28C8BF6100584BE1 /* Assets.xcassets in Resources */,
 				93C8266428B4CFA600B46604 /* LaunchScreen.storyboard in Resources */,
+				5281CF6E28C8BF6100584BE1 /* playstore.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +259,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5293EBFB28BA7816003A8C06 /* AddVC.swift in Sources */,
-				52EA582128B87629007D7283 /* webVC.swift in Sources */,
 				52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */,
 				93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */,
 				52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */,

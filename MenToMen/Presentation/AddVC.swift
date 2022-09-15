@@ -2,20 +2,57 @@ import UIKit
 import Then
 import SnapKit
 
-class AddVC: UIViewController {
+class AddVC: UIViewController, ConstraintRelatableTarget {
     
     private let titleTextField = UITextField().then {
         $0.text = "멘토에게 부탁할 내용을 입력하세요."
         $0.textColor = .systemBackground
         $0.font = .systemFont(ofSize: 15, weight: .medium)
     }
+    private let addPostButton = UIButton().then {
+        $0.backgroundColor = UIColor(red: 0.2549, green: 0.3608, blue: 0.949, alpha: 1.0)
+        $0.setTitle("멘토 요청하기", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        $0.titleLabel?.textColor = .black
+        $0.titleLabel?.textAlignment = .center
+        $0.addTarget(self, action: #selector(TabAddPostButton), for: .touchUpInside)
+    }
+    
+    @objc func TabAddPostButton() {
+        if(successSignIn == true) {
+            print("게시물 업로드 성공!")
+            let VC = TabBarController()
+            VC.modalPresentationStyle = .fullScreen
+            self.present(VC, animated: true, completion: nil)
+        } else {
+            print("로그인을 해야 이용가능합니다.")
+        }
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         setupNavigationBar()
+        setUp()
         self.tabBarController?.tabBar.isHidden = true
     }
+    
+    func setUp() {
+        
+        [
+            addPostButton
+            
+        ].forEach{ self.view.addSubview($0) }
+        
+        addPostButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(760)
+            $0.bottom.equalToSuperview()
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+        }
+    }
+    
 }
 
 private extension AddVC {
@@ -25,10 +62,10 @@ private extension AddVC {
         let backButton = UIButton(frame: CGRect(x: 0, y: 0, width: backButtonImage.size.width, height: backButtonImage.size.height))
         backButton.setImage(backButtonImage, for: .normal)
         backButton.addTarget(self, action: #selector(TabBackButton), for: .touchUpInside)
-
         
         let backBarButton = UIBarButtonItem(customView: backButton)
         
+        self.navigationItem.title = "글쓰기"
         self.navigationItem.leftBarButtonItems = [backBarButton]
         
         var configuration = UIButton.Configuration.plain()

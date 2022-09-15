@@ -3,9 +3,10 @@ import Then
 import SnapKit
 import WebKit
 
+var successSignIn:Bool = false //로그인 성공 유무 판단하는 변수
+
 class SignInVC: UIViewController {
-    // MARK: - 로그인화면
-    
+    // MARK: - 로그인화면    
     private let logoImageView = UIImageView().then {
         $0.image = UIImage(named: "MTMLogo1")
     }
@@ -46,15 +47,26 @@ class SignInVC: UIViewController {
     }
     
     @objc func TabSignInButton() {
+        let id = idTextField.text!
+        let pw = pwTextField.text!
         
-        let id = idTextField.text
-        let pw = pwTextField.text
-        print(id, pw)
+        if(id == "1234" || pw == "1234") {
+            //로그인 성공/실패 더미데이터
+            print("로그인 성공!")
+            successSignIn = true
+            
+        } else {
+            let alert = UIAlertController(title: "실패", message: "로그인에 실패하였습니다.", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+
+        }
     }
     
     @objc func tabSignUpButton() {
         
-        let rootVC = UIViewController()
+        let rootVC = SignUpVC()
         let VC = UINavigationController(rootViewController: rootVC)
 //        VC.modalPresentationStyle = .fullScreen
         self.present(VC, animated: true)

@@ -3,7 +3,7 @@ import SnapKit
 import Then
 
 //피드 뷰컨트롤러
-class FeedVC:UIViewController, UITableViewDelegate {
+class FeedVC:UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -17,6 +17,7 @@ class FeedVC:UIViewController, UITableViewDelegate {
         return tableView
         
     }()
+    
     //더미데이터
     var userData: [UserData] = []
     let tagImages = ["iOS", "Server","ADOS","Web","Design","iOS", "Server","ADOS","Web","Design"]
@@ -32,12 +33,10 @@ class FeedVC:UIViewController, UITableViewDelegate {
                     "예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다",
                     "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다"
     ]
-
+    
     
     func makeData() {
-        let len = tagImages.count
-        
-        for i in 0 ... (len - 1) {
+        for i in 0 ... 8 {
             userData.append(UserData.init(
                 tagImage: UIImage(named: tagImages[i])!,
                 userName: userNames[i],
@@ -45,10 +44,12 @@ class FeedVC:UIViewController, UITableViewDelegate {
             ))
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        tableView.delegate = self
+        
         setupNavigationBar()
         setupView()
         
@@ -61,7 +62,7 @@ class FeedVC:UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         tableView.rowHeight = 100
     }
-        
+    
     private func addSubView() {
         view.addSubview(tableView)
     }
@@ -79,22 +80,38 @@ class FeedVC:UIViewController, UITableViewDelegate {
             tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
-            ])
-        }
+        ])
+    }
 }
 
-extension FeedVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userData.count
-    }
+extension FeedVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
         cell.tagImage.image = userData[indexPath.row].tagImage ?? UIImage(named: "default")
         cell.userName.text = userData[indexPath.row].userName ?? ""
         cell.content.text = userData[indexPath.row].content ?? ""
-
+        
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return userData.count
+        }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+        }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = view.backgroundColor
+        return headerView
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
 }
 
@@ -110,15 +127,15 @@ private extension FeedVC {
         let imageItem = UIBarButtonItem.init(customView: logoImageView)
         let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 120)
         let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 50.0)
-         heightConstraint.isActive = true
-         widthConstraint.isActive = true
-         navigationItem.leftBarButtonItem = imageItem
+        heightConstraint.isActive = true
+        widthConstraint.isActive = true
+        navigationItem.leftBarButtonItem = imageItem
         
         let bellButtonImage = UIImage(systemName: "bell")!
         let bellButton = UIButton(frame: CGRect(x: 0, y: 0, width: bellButtonImage.size.width, height: bellButtonImage.size.height))
         bellButton.setImage(bellButtonImage, for: .normal)
         bellButton.addTarget(self, action: #selector(TabBellButton), for: .touchUpInside)
-                
+        
         let searchButtonImage = UIImage(systemName: "magnifyingglass")!
         let searchButton = UIButton(frame: CGRect(x: 0, y: 0, width: searchButtonImage.size.width, height: searchButtonImage.size.height))
         searchButton.setImage(searchButtonImage, for: .normal)
@@ -126,15 +143,15 @@ private extension FeedVC {
         
         let bellBarButton = UIBarButtonItem(customView: bellButton)
         let searchBarButton = UIBarButtonItem(customView: searchButton)
-             
+        
         self.navigationItem.rightBarButtonItems = [bellBarButton, searchBarButton]
         
         var configuration = UIButton.Configuration.plain()
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0)
-
+        
         bellButton.configuration = configuration
         searchButton.configuration = configuration
-
+        
     }
     
     @objc func TabBellButton() {

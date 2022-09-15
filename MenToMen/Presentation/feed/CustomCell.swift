@@ -30,9 +30,10 @@ class CustomCell: UITableViewCell {
     
     private func addContentView() {
         
+        
         backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.15)
         layer.cornerRadius = 20
-        layer.borderWidth = 8
+        layer.borderWidth = 1
         
         contentView.addSubview(tagImage)
         contentView.addSubview(userName)
@@ -57,17 +58,7 @@ class CustomCell: UITableViewCell {
             tagImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tagImage.widthAnchor.constraint(equalToConstant: 36),
             tagImage.heightAnchor.constraint(equalToConstant: 54),
-            tagImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
-            
-//            userName.topAnchor.constraint(equalTo: self.topAnchor),
-//            userName.leadingAnchor.constraint(equalTo: tagImage.trailingAnchor, constant: CGFloat(10)),
-//            userName.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//
-//            content.topAnchor.constraint(equalTo: userName.bottomAnchor),
-//            content.leadingAnchor.constraint(equalTo: tagImage.trailingAnchor, constant: CGFloat(5)),
-//            content.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            content.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-//            content.heightAnchor.constraint(equalTo: userName.heightAnchor),
+            tagImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20)
         ])
     }
     
