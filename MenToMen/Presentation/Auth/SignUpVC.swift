@@ -9,13 +9,14 @@ class SignUpVC: UIViewController {
         $0.backgroundColor = .purple
         $0.font = .systemFont(ofSize: 14.0, weight: .medium)
         $0.borderStyle = .roundedRect
+        $0.autocapitalizationType = .none
     }
     
     private let idTextField = UITextField().then {
-        $0.borderStyle = .roundedRect
         $0.tintColor = .systemBackground
         $0.placeholder = "아이디를 입력해주세요!"
         $0.font = .systemFont(ofSize: 14, weight: .medium)
+        $0.borderStyle = .roundedRect
         $0.autocapitalizationType = .none
     }
 
@@ -82,9 +83,9 @@ class SignUpVC: UIViewController {
         ].forEach{ self.view.addSubview($0) }
         
         nameTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(180)
+            $0.top.equalToSuperview().offset(200)
             $0.left.equalToSuperview().offset(35)
-            $0.right.equalToSuperview().inset(35)
+            $0.right.equalToSuperview().offset(35)
         }
     }
 }

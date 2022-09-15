@@ -20,29 +20,17 @@ class FeedVC:UIViewController {
     
     //더미데이터
     var userData: [UserData] = []
-    let tagImages = ["iOS", "Server","ADOS","Web","Design","iOS", "Server","ADOS","Web","Design"]
-    let userNames = ["이민규", "김종윤","이지민","이서코","이재건","이민규", "김종윤","이지민","이서코","이재건"]
-    let contents = ["swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요.",
-                    "아 디자인 하기 싫다~~ 몬스터나 빨아야지~~ 야 이민규 홈마트 가자 오늘 점심 편의점야무지다~",
-                    "안드로이드 한번 배워보고 싶은데 첫 걸음을 도와주실 선배님을 구하지 않습니다.",
-                    "예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다",
-                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다",
-                    "swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요.",
-                    "아 디자인 하기 싫다~~ 몬스터나 빨아야지~~ 야 이민규 홈마트 가자 오늘 점심 편의점야무지다~",
-                    "안드로이드 한번 배워보고 싶은데 첫 걸음을 도와주실 선배님을 구하지 않습니다.",
-                    "예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다",
-                    "안뇽~~예아 바닐라 JS도와주실 선배님을 찾습니다 ㅠㅠ 급합니다"
-    ]
+    let tagImages = ["iOS"]
+    let userNames = ["이민규"]
+    let contents = ["swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요."]
     
     
     func makeData() {
-        for i in 0 ... 8 {
-            userData.append(UserData.init(
-                tagImage: UIImage(named: tagImages[i])!,
-                userName: userNames[i],
-                content: contents[i]
-            ))
-        }
+        userData.append(UserData.init(
+            tagImage: UIImage(named: tagImages[0])!,
+            userName: userNames[0],
+            content: contents[0]
+        ))
     }
     
     override func viewDidLoad() {
@@ -88,6 +76,7 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+        cell.selectionStyle = .none
         cell.tagImage.image = userData[indexPath.row].tagImage ?? UIImage(named: "default")
         cell.userName.text = userData[indexPath.row].userName ?? ""
         cell.content.text = userData[indexPath.row].content ?? ""
@@ -96,7 +85,7 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return userData.count
+        return 8
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

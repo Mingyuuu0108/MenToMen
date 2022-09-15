@@ -5,13 +5,17 @@ import SnapKit
 class AddVC: UIViewController, ConstraintRelatableTarget {
     
     private let titleTextField = UITextField().then {
-        $0.text = "멘토에게 부탁할 내용을 입력하세요."
-        $0.textColor = .systemBackground
+        $0.placeholder = "멘토에게 부탁할 내용을 입력하세요."
+        $0.textColor = .black
         $0.font = .systemFont(ofSize: 15, weight: .medium)
+        $0.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        $0.layer.cornerRadius = 20
     }
+    
     private let addPostButton = UIButton().then {
         $0.backgroundColor = UIColor(red: 0.2549, green: 0.3608, blue: 0.949, alpha: 1.0)
         $0.setTitle("멘토 요청하기", for: .normal)
+//        $0.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         $0.titleLabel?.textColor = .black
         $0.titleLabel?.textAlignment = .center
@@ -25,7 +29,10 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
             VC.modalPresentationStyle = .fullScreen
             self.present(VC, animated: true, completion: nil)
         } else {
-            print("로그인을 해야 이용가능합니다.")
+            let alert = UIAlertController(title: "실패", message: "로그인 후 이용가능", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -41,7 +48,8 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
     func setUp() {
         
         [
-            addPostButton
+            addPostButton,
+            titleTextField
             
         ].forEach{ self.view.addSubview($0) }
         
@@ -50,6 +58,12 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
             $0.bottom.equalToSuperview()
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
+        }
+        titleTextField.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+            $0.top.equalToSuperview().offset(100)
+            $0.bottom.equalTo(addPostButton).offset(-100)
         }
     }
     

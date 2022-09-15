@@ -55,6 +55,10 @@ class SignInVC: UIViewController {
             print("로그인 성공!")
             successSignIn = true
             
+            let alert = UIAlertController(title: "성공", message: "로그인에 성공하였습니다.", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(okAction)
+            
         } else {
             let alert = UIAlertController(title: "실패", message: "로그인에 실패하였습니다.", preferredStyle: UIAlertController.Style.alert)
             let okAction = UIAlertAction(title: "확인", style: .default)
@@ -68,13 +72,14 @@ class SignInVC: UIViewController {
         
         let rootVC = SignUpVC()
         let VC = UINavigationController(rootViewController: rootVC)
-//        VC.modalPresentationStyle = .fullScreen
         self.present(VC, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
+
         setup()
             
     }
