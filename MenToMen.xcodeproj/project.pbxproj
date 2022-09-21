@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		521B374328D33C0200F1DAE4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B374228D33C0200F1DAE4 /* ProfileVC.swift */; };
 		5266C98928BCCCA500B61B3B /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C98828BCCCA500B61B3B /* FeedVC.swift */; };
+		5274614928D88CC6009427B2 /* testFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274614828D88CC6009427B2 /* testFile.swift */; };
 		5281CF6B28C8BF6100584BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6628C8BF6000584BE1 /* Assets.xcassets */; };
 		5281CF6C28C8BF6100584BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6828C8BF6000584BE1 /* Assets.xcassets */; };
 		5281CF6D28C8BF6100584BE1 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6928C8BF6000584BE1 /* appstore.png */; };
@@ -18,6 +19,7 @@
 		52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA581E28B8413B007D7283 /* TabBarController.swift */; };
 		52EA582428B88568007D7283 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA582328B88568007D7283 /* SignUpVC.swift */; };
 		52EB706228B4D13000E5FD28 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EB706128B4D13000E5FD28 /* SignInVC.swift */; };
+		6004118FB33CD2A831F578A9 /* Pods_MenToMen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17BA5D968B67589B004BCB1 /* Pods_MenToMen.framework */; };
 		93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8265728B4CFA500B46604 /* AppDelegate.swift */; };
 		93C8265A28B4CFA500B46604 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C8265928B4CFA500B46604 /* SceneDelegate.swift */; };
 		93C8266428B4CFA600B46604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C8266228B4CFA600B46604 /* LaunchScreen.storyboard */; };
@@ -29,6 +31,7 @@
 		521B374128D1BD9B00F1DAE4 /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenToMen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521B374228D33C0200F1DAE4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		5266C98828BCCCA500B61B3B /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		5274614828D88CC6009427B2 /* testFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testFile.swift; sourceTree = "<group>"; };
 		5281CF6628C8BF6000584BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Assets.xcassets; sourceTree = "<group>"; };
 		5281CF6828C8BF6000584BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5281CF6928C8BF6000584BE1 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		93C8265928B4CFA500B46604 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		93C8266328B4CFA600B46604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93C8266528B4CFA600B46604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D17BA5D968B67589B004BCB1 /* Pods_MenToMen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MenToMen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6004118FB33CD2A831F578A9 /* Pods_MenToMen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +104,7 @@
 				521B374428D33C8400F1DAE4 /* profile */,
 				52EA581E28B8413B007D7283 /* TabBarController.swift */,
 				5293EBFA28BA7816003A8C06 /* AddVC.swift */,
+				5274614828D88CC6009427B2 /* testFile.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -135,6 +141,7 @@
 				93C8265628B4CFA500B46604 /* MenToMen */,
 				8EB2153CEE5A7073EA067A2F /* Pods */,
 				521B374128D1BD9B00F1DAE4 /* MenToMen.app */,
+				CD43A781FC6926C6F509D847 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +157,14 @@
 				52EB707128B4D47100E5FD28 /* Presentation */,
 			);
 			path = MenToMen;
+			sourceTree = "<group>";
+		};
+		CD43A781FC6926C6F509D847 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D17BA5D968B67589B004BCB1 /* Pods_MenToMen.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +287,7 @@
 				5293EBFB28BA7816003A8C06 /* AddVC.swift in Sources */,
 				52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */,
 				93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */,
+				5274614928D88CC6009427B2 /* testFile.swift in Sources */,
 				521B374328D33C0200F1DAE4 /* ProfileVC.swift in Sources */,
 				52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */,
 				93C8265A28B4CFA500B46604 /* SceneDelegate.swift in Sources */,

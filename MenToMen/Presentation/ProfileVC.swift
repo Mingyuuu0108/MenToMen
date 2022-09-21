@@ -6,16 +6,7 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
-        
-        [testButton].forEach{ self.view.addSubview($0) }
-
-        testButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(400)
-            $0.bottom.equalToSuperview().offset(-400)
-            $0.left.equalToSuperview().offset(80)
-            $0.right.equalToSuperview().offset(-80)
-        }
-        
+        setup()
     }
     
     private let testButton = UIButton().then {
@@ -27,12 +18,25 @@ class ProfileVC: UIViewController {
         $0.layer.cornerRadius = 5.0
         $0.addTarget(self, action: #selector(TabTestButton), for: .touchUpInside)
     }
+
+//    private let userProfileCell
     
     @objc func TabTestButton() {
         
         let rootVC = SignInVC()
         let VC = UINavigationController(rootViewController: rootVC)
         self.present(VC, animated: true)
+    }
+    
+    func setup() {
+        [testButton].forEach{ self.view.addSubview($0) }
+
+        testButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(400)
+            $0.bottom.equalToSuperview().offset(-400)
+            $0.left.equalToSuperview().offset(80)
+            $0.right.equalToSuperview().offset(-80)
+        }
     }
     
 }

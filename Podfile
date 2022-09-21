@@ -9,4 +9,6 @@ target 'MenToMen' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Then'
   pod 'CryptoSwift', '~> 1.4.0'
+  pod 'Alamofire'
+  pod 'Kingfisher'
 end

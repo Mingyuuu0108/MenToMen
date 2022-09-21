@@ -6,7 +6,6 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
     
     private let titleTextField = UITextField().then {
         $0.placeholder = "멘토에게 부탁할 내용을 입력하세요."
-        $0.textColor = .black
         $0.font = .systemFont(ofSize: 15, weight: .medium)
         $0.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         $0.layer.cornerRadius = 20
@@ -53,17 +52,18 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
             
         ].forEach{ self.view.addSubview($0) }
         
-        addPostButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(760)
-            $0.bottom.equalToSuperview()
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
-        }
         titleTextField.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
             $0.top.equalToSuperview().offset(100)
-            $0.bottom.equalTo(addPostButton).offset(-100)
+            $0.bottom.equalToSuperview().offset(-100)
+        }
+
+        addPostButton.snp.makeConstraints {
+            $0.top.equalTo(titleTextField.snp.bottom).offset(20)
+            $0.bottom.equalToSuperview()
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
         }
     }
     

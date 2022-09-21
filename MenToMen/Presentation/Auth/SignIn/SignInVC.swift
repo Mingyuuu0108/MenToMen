@@ -58,6 +58,7 @@ class SignInVC: UIViewController {
             let alert = UIAlertController(title: "성공", message: "로그인에 성공하였습니다.", preferredStyle: UIAlertController.Style.alert)
             let okAction = UIAlertAction(title: "확인", style: .default)
             alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
             
         } else {
             let alert = UIAlertController(title: "실패", message: "로그인에 실패하였습니다.", preferredStyle: UIAlertController.Style.alert)

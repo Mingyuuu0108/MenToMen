@@ -1,10 +1,12 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
+import Alamofire
 
 //피드 뷰컨트롤러
 class FeedVC:UIViewController {
-    
+        
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         view.addSubview(tableView)
@@ -18,21 +20,6 @@ class FeedVC:UIViewController {
         
     }()
     
-    //더미데이터
-    var userData: [UserData] = []
-    let tagImages = ["iOS"]
-    let userNames = ["이민규"]
-    let contents = ["swift Snapkit으로 테이블뷰의 셀 레이아웃을 대신 짜 줄 사람 구해요.. 너무 어렵네요."]
-    
-    
-    func makeData() {
-        userData.append(UserData.init(
-            tagImage: UIImage(named: tagImages[0])!,
-            userName: userNames[0],
-            content: contents[0]
-        ))
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +28,7 @@ class FeedVC:UIViewController {
         setupNavigationBar()
         setupView()
         
-        makeData()
+//        makeData()
         configure()
         addSubView()
         autoLayout()
@@ -70,39 +57,83 @@ class FeedVC:UIViewController {
             tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
         ])
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ParsingJSON()
+    }
+    
+    var data: [Contact] = []
+
+    
+}
+
+struct Contact: Codable {
+    let userName: String!
+    let content: String!
+    let tag: String!
+}
+
+private func ParsingJSON() {
+        
+    let url = "http://10.80.163.171:8080/post/read-all"
+
+    AF.request(url,
+               method: .get,
+               parameters: nil,
+               encoding: URLEncoding.default,
+               headers: ["Content-Type":"application/json", "Accept":"application/json"])
+    .validate(statusCode: 200..<300)
+    .responseJSON { (response) in
+        switch (response).result {
+        case.success(let result):
+            debugPrint(result)
+        case.failure(let error):
+            debugPrint(error)
+        }
+    }
 }
 
 extension FeedVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
-        cell.selectionStyle = .none
-        cell.tagImage.image = userData[indexPath.row].tagImage ?? UIImage(named: "default")
-        cell.userName.text = userData[indexPath.row].userName ?? ""
-        cell.content.text = userData[indexPath.row].content ?? ""
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+        
+        cell.selectionStyle = .none
+        cell.tagImage.image = data[indexPath.row].tag
+        cell.userName.text = data[indexPath.row].userName
+        cell.content.text = data[indexPath.row].content
+
         return cell
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 8
-        }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-        }
+        return data.count
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = view.backgroundColor
         return headerView
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 8
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //피드 네비게이션바 뷰
 private extension FeedVC {
@@ -149,5 +180,6 @@ private extension FeedVC {
     @objc func TabSearchButton() {
         print("검색")
     }
+
     
 }
