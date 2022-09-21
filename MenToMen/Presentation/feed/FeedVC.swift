@@ -6,6 +6,8 @@ import Alamofire
 
 //피드 뷰컨트롤러
 class FeedVC:UIViewController {
+    
+    let url = "http://10.80.163.171:8080/post/read-all"
         
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -27,8 +29,7 @@ class FeedVC:UIViewController {
         
         setupNavigationBar()
         setupView()
-        
-//        makeData()
+
         configure()
         addSubView()
         autoLayout()
@@ -64,14 +65,14 @@ class FeedVC:UIViewController {
     }
     
     var data: [Contact] = []
-
     
 }
 
 struct Contact: Codable {
-    let userName: String!
-    let content: String!
-    let tag: String!
+    let userName: String
+    let content: String
+    let tag: String
+    
 }
 
 private func ParsingJSON() {
@@ -100,16 +101,19 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
         
-        cell.selectionStyle = .none
-        cell.tagImage.image = data[indexPath.row].tag
+//        let postImageURL = URL(string: "\(url)/uploads\(self.data[indexPath.row].tag)")
+//        let tagTest = 
+//        cell.tagImage.image = data[indexPath.row].
         cell.userName.text = data[indexPath.row].userName
         cell.content.text = data[indexPath.row].content
+                
+        cell.selectionStyle = .none
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return self.data.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -122,16 +126,6 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
         return 8
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -25,7 +25,7 @@ class CustomCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addContentView()
-        setup()
+        autoLayout()
     }
     
     private func addContentView() {
@@ -40,7 +40,7 @@ class CustomCell: UITableViewCell {
         contentView.addSubview(content)
     }
     
-    private func setup() {
+    private func autoLayout() {
         
         userName.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
@@ -66,4 +66,16 @@ class CustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
         
+}
+
+class UserData {
+    var tagImage: UIImage!
+    var userName: String!
+    var content: String!
+    
+    init(tagImage: UIImage ,userName: String, content: String) {
+        self.tagImage = tagImage
+        self.userName = userName
+        self.content = content
+    }
 }
