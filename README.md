@@ -1,7 +1,7 @@
 # Men_To_Men
 uikit
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'SnapKit'
   pod 'Then'
-  pod 'CryptoSwift', '~> 1.4.0'
+  pod 'CryptoSwift'
   pod 'Alamofire'
   pod 'Kingfisher'
