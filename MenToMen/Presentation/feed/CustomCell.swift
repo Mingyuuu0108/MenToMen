@@ -6,19 +6,19 @@ class CustomCell: UITableViewCell {
 
     static let identifier = "CustomCell"
     
-    let tagImage = UIImageView().then { UIImageView in
-        UIImageView.translatesAutoresizingMaskIntoConstraints = false
+    let tagImage = UIImageView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    let userName = UILabel().then { UILabel in
-        UILabel.translatesAutoresizingMaskIntoConstraints = false
-        UILabel.font = UIFont.boldSystemFont(ofSize: 18)
+    let userName = UILabel().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.font = UIFont.boldSystemFont(ofSize: 18)
     }
     
-    let content = UILabel().then { UILabel in
-        UILabel.translatesAutoresizingMaskIntoConstraints = false
-        UILabel.font = UIFont.boldSystemFont(ofSize: 14)
-        UILabel.numberOfLines = 0 //텍스트가 셀을 넘었을 떄 줄바꿈을 해주는 코드
+    let content = UILabel().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.font = UIFont.boldSystemFont(ofSize: 14)
+        $0.numberOfLines = 0 //텍스트가 셀을 넘었을 떄 줄바꿈을 해주는 코드
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

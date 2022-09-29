@@ -7,14 +7,13 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
     private let titleTextField = UITextField().then {
         $0.placeholder = "멘토에게 부탁할 내용을 입력하세요."
         $0.font = .systemFont(ofSize: 15, weight: .medium)
-        $0.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        $0.backgroundColor = .systemBackground
         $0.layer.cornerRadius = 20
     }
     
     private let addPostButton = UIButton().then {
         $0.backgroundColor = UIColor(red: 0.2549, green: 0.3608, blue: 0.949, alpha: 1.0)
         $0.setTitle("멘토 요청하기", for: .normal)
-//        $0.setImage(UIImage(systemName: "pencil.tip.crop.circle.badge.plus"), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         $0.titleLabel?.textColor = .black
         $0.titleLabel?.textAlignment = .center
@@ -22,6 +21,7 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
     }
     
     @objc func TabAddPostButton() {
+        
         if(successSignIn == true) {
             print("게시물 업로드 성공!")
             let VC = TabBarController()

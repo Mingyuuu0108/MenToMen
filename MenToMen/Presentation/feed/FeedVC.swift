@@ -4,10 +4,10 @@ import Then
 import Kingfisher
 import Alamofire
 
+let url = URL(string: "http://10.80.162.149:8080/post/read-all")
+
 //피드 뷰컨트롤러
 class FeedVC:UIViewController {
-    
-    let url = "http://10.80.163.171:8080/post/read-all"
         
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -72,14 +72,11 @@ struct Contact: Codable {
     let userName: String
     let content: String
     let tag: String
-    
 }
 
 private func ParsingJSON() {
-        
-    let url = "http://10.80.163.171:8080/post/read-all"
 
-    AF.request(url,
+    AF.request(url!,
                method: .get,
                parameters: nil,
                encoding: URLEncoding.default,
@@ -101,9 +98,7 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
         
-//        let postImageURL = URL(string: "\(url)/uploads\(self.data[indexPath.row].tag)")
-//        let tagTest = 
-//        cell.tagImage.image = data[indexPath.row].
+//        cell.tagImage.image = data[indexPath.row]
         cell.userName.text = data[indexPath.row].userName
         cell.content.text = data[indexPath.row].content
                 
