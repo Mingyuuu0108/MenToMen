@@ -4,111 +4,103 @@ import Then
 import Kingfisher
 import Alamofire
 
-let url = URL(string: "http://10.80.162.149:8080/post/read-all")
+let url = URL(string: "http://10.80.163.83:8080/post/read-all")
 
 //피드 뷰컨트롤러
 class FeedVC:UIViewController {
+    
+    struct Contact: Codable {
+        let userName: String
+        let content: String
+        let tag: String
+    }
+    
+    private lazy var tableView = UITableView().then {
+        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
+        $0.delegate = self
+        $0.dataSource = self
+        $0.rowHeight = 100
         
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        view.addSubview(tableView)
-        
-        tableView.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(20)
-            make.right.equalTo(view).offset(-20)
-            make.top.equalTo(view).offset(40) }
-        
-        return tableView
-        
-    }()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        
         setupNavigationBar()
         setupView()
-
-        configure()
         addSubView()
-        autoLayout()
-    }
-    private func configure() {
-        tableView.dataSource = self
-        tableView.rowHeight = 100
     }
     
     private func addSubView() {
         view.addSubview(tableView)
     }
     
-    private func setupView() {tableView.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+    private func setupView() {
         
     }
     
-    private func autoLayout() {
-        let guide = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: guide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
-        ])
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         ParsingJSON()
     }
     
-    var data: [Contact] = []
+    fileprivate var Posts: [Posts] = []
     
-}
+    private func ParsingJSON() {
+        
+        AF.request(url!,
+                   method: .get,
+                   parameters: nil,
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
+        .validate(statusCode: 200..<300)
+        .responseJSON { (response) in
+            switch response.result{
+            case .success(let data):
+                
+                print("성공\n🔥\n\(response)")
+                let decoder = JSONDecoder()
+                let result = try? decoder.decode(HomeResponse.self, from: data)
 
-struct Contact: Codable {
-    let userName: String
-    let content: String
-    let tag: String
-}
-
-private func ParsingJSON() {
-
-    AF.request(url!,
-               method: .get,
-               parameters: nil,
-               encoding: URLEncoding.default,
-               headers: ["Content-Type":"application/json", "Accept":"application/json"])
-    .validate(statusCode: 200..<300)
-    .responseJSON { (response) in
-        switch (response).result {
-        case.success(let result):
-            debugPrint(result)
-        case.failure(let error):
-            debugPrint(error)
+                self.Posts = result?.posts ?? []
+                
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+            }
         }
     }
 }
 
 extension FeedVC: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.Posts.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+        cell.userName.text = "\(String(describing: self.Posts[indexPath.row].userName))"
         
-//        cell.tagImage.image = data[indexPath.row]
-        cell.userName.text = data[indexPath.row].userName
-        cell.content.text = data[indexPath.row].content
-                
+        cell.content.text = "\(self.Posts[indexPath.row].content!)"
+        
+        if ((self.Posts[indexPath.row].tag) ==  "IOS") {
+            cell.tagImage.image = UIImage(named: "iOS")
+        } else if ((self.Posts[indexPath.row].tag) ==  "WEB") {
+            cell.tagImage.image = UIImage(named: "Web")
+        } else if ((self.Posts[indexPath.row].tag) ==  "SERVER") {
+            cell.tagImage.image = UIImage(named: "Server")
+        } else if ((self.Posts[indexPath.row].tag) ==  "ANDROID") {
+            cell.tagImage.image = UIImage(named: "Android")
+        } else {
+            cell.tagImage.image = UIImage(named: "Design")
+        }
+        
         cell.selectionStyle = .none
-
+        
+        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -169,6 +161,6 @@ private extension FeedVC {
     @objc func TabSearchButton() {
         print("검색")
     }
-
+    
     
 }

@@ -67,15 +67,3 @@ class CustomCell: UITableViewCell {
     }
         
 }
-
-class UserData {
-    var tagImage: UIImage!
-    var userName: String!
-    var content: String!
-    
-    init(tagImage: UIImage ,userName: String, content: String) {
-        self.tagImage = tagImage
-        self.userName = userName
-        self.content = content
-    }
-}
