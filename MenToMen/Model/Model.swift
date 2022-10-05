@@ -19,12 +19,12 @@ struct Posts: Codable {
     var updateDateTime: Date?
     var updateStatus: String?
     var userName: String?
-    
-//    struct Student {
-//        var grade: Int?
-//        var number: Int?
-//        var room: Int?
-//    }
+}
+
+struct Student {
+    var grade: Int?
+    var number: Int?
+    var room: Int?
 }
 
 struct HomeResponse: Codable{

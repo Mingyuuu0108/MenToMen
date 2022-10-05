@@ -30,7 +30,6 @@ class CustomCell: UITableViewCell {
     
     private func addContentView() {
         
-        
         backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.15)
         layer.cornerRadius = 20
         layer.borderWidth = 1
