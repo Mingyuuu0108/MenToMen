@@ -2,12 +2,14 @@ import UIKit
 import Then
 import SnapKit
 
+fileprivate let url = URL(string: "\(API)/post/submit")
+
 class AddVC: UIViewController, ConstraintRelatableTarget {
     
     private let titleTextField = UITextField().then {
         $0.placeholder = "멘토에게 부탁할 내용을 입력하세요."
         $0.font = .systemFont(ofSize: 15, weight: .medium)
-        $0.backgroundColor = .systemBackground
+        $0.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         $0.layer.cornerRadius = 20
     }
     
@@ -21,18 +23,6 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
     }
     
     @objc func TabAddPostButton() {
-        
-        if(successSignIn == true) {
-            print("게시물 업로드 성공!")
-            let VC = TabBarController()
-            VC.modalPresentationStyle = .fullScreen
-            self.present(VC, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "실패", message: "로그인 후 이용가능", preferredStyle: UIAlertController.Style.alert)
-            let okAction = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        }
     }
     
     override func viewDidLoad() {

@@ -1,25 +1,15 @@
 import UIKit
 
+fileprivate let url = URL(string: "\(API)/user/my")
+
 class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
-        setup()
+//        setup()
     }
-    
-    private let testButton = UIButton().then {
-        $0.backgroundColor = UIColor(red: 0.2549, green: 0.3608, blue: 0.949, alpha: 1.0)
-        $0.setTitle("테스트", for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 24, weight: .bold)
-        $0.titleLabel?.textColor = .black
-        $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 5.0
-        $0.addTarget(self, action: #selector(TabTestButton), for: .touchUpInside)
-    }
-
-//    private let userProfileCell
     
     @objc func TabTestButton() {
         
@@ -28,16 +18,16 @@ class ProfileVC: UIViewController {
         self.present(VC, animated: true)
     }
     
-    func setup() {
-        [testButton].forEach{ self.view.addSubview($0) }
-
-        testButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(400)
-            $0.bottom.equalToSuperview().offset(-400)
-            $0.left.equalToSuperview().offset(80)
-            $0.right.equalToSuperview().offset(-80)
-        }
-    }
+//    func setup() {
+//        [testButton].forEach{ self.view.addSubview($0) }
+//
+//        testButton.snp.makeConstraints {
+//            $0.top.equalToSuperview().offset(400)
+//            $0.bottom.equalToSuperview().offset(-400)
+//            $0.left.equalToSuperview().offset(80)
+//            $0.right.equalToSuperview().offset(-80)
+//        }
+//    }
     
 }
 

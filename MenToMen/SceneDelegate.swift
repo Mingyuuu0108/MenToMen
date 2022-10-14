@@ -18,7 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.tintColor = UIColor(red: 0.1529, green: 0.2863, blue: 0.8627, alpha: 1.0)
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = TabBarController()
+        window?.rootViewController = SignInVC()
+//        window?.rootViewController = TabBarController()
     }
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

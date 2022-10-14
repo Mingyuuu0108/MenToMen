@@ -4,10 +4,12 @@ import Then
 import Kingfisher
 import Alamofire
 
-let url = URL(string: "http://10.80.163.83:8080/post/read-all")
+fileprivate let url = URL(string: "\(API)/post/read-all")
 
-//피드 뷰컨트롤러
-class FeedVC:UIViewController {
+class FeedVC:UIViewController, UITableViewDelegate {
+    
+    var data: [PostData] = []
+    var datas: [PostDatas] = []
     
     private lazy var tableView = UITableView().then {
         $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
@@ -16,15 +18,16 @@ class FeedVC:UIViewController {
         $0.rowHeight = 100
     }
     
+    func setuptableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints{ $0.edges.equalToSuperview()}
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setuptableView()
         setupNavigationBar()
-        addSubView()
-    }
-    
-    private func addSubView() {
-        view.addSubview(tableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,73 +36,76 @@ class FeedVC:UIViewController {
         ParsingJSON()
     }
     
-    fileprivate var Posts: [Posts] = []
-    
     private func ParsingJSON() {
         
         AF.request(url!,
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
-                   headers: ["Content-Type":"application/json", "Accept":"application/json"])
-        .responseJSON { (response) in
-            switch response.result{
+                   headers: ["Content-Type":"application/json"])
+        .validate()
+        .responseData { (response) in
+            switch response.result {
             case .success:
+                print("성공\n🔥")
                 
-                var data = response.data!
-
-                let decoder = JSONDecoder()
-                
-                print("성공🔥\n\(response)")
-                let decodedResponse = try? decoder.decode(HomeResponse.self, from: data)
-                
-                self.Posts = decodedResponse?.posts ?? []
-                
-                print(self.Posts)
-                //현재 오류 decodedResponse 값이 nil이 나옴 그래서 그런지 self.Posts 도 빈배열로 나옴
-                
+                guard let value = response.value else { return }
+                guard let result = try? decoder.decode(PostData.self, from: value) else { return }
+                self.datas = result.data
                 self.tableView.reloadData()
+                
             case .failure(let error):
-                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
         }
     }
 }
 
-extension FeedVC: UITableViewDataSource, UITableViewDelegate {
+func checkResponse(_ response: DataResponse<Data, AFError>) {
+    if response.data == nil {
+        print("RESPONSE DATA IS NIL")
+    } else {
+        print(String(decoding: response.data!, as: UTF8.self))
+    }
+}
+
+extension FeedVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.Posts.count
+        return self.datas.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+        cell.selectionStyle = .none
         
-        cell.userName.text = Posts[indexPath.row].userName!
+        let grade = self.datas[indexPath.row].stdInfo.grade
+        let room = self.datas[indexPath.row].stdInfo.room
+        let number = self.datas[indexPath.row].stdInfo.number
         
-        cell.content.text = Posts[indexPath.row].content!
+        cell.userName.text = self.datas[indexPath.row].userName
+        cell.userInfo.text = "\(grade!)학년 \(room!)반 \(number!)번"
+        cell.content.text = self.datas[indexPath.row].content
         
-//        cell.tagImage.image = UIImage(named: "iOS")
-        
-        if ((self.Posts[indexPath.row].tag) ==  "IOS") {
+        switch self.datas[indexPath.row].tag {
+        case "IOS":
             cell.tagImage.image = UIImage(named: "iOS")
-        } else if ((self.Posts[indexPath.row].tag) ==  "WEB") {
+        case "WEB":
             cell.tagImage.image = UIImage(named: "Web")
-        } else if ((self.Posts[indexPath.row].tag) ==  "SERVER") {
+        case "SERVER":
             cell.tagImage.image = UIImage(named: "Server")
-        } else if ((self.Posts[indexPath.row].tag) ==  "ANDROID") {
+        case "ANDROID":
             cell.tagImage.image = UIImage(named: "Android")
-        } else {
+        default:
             cell.tagImage.image = UIImage(named: "Design")
         }
         
-        cell.selectionStyle = .none
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 8
     }
 }
 

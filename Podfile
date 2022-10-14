@@ -11,4 +11,6 @@ target 'MenToMen' do
   pod 'CryptoSwift', '~> 1.4.0'
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'KeychainAccess'
+
 end

@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
             addViewController.tabBarItem.image = UIImage(systemName: "plus.circle")
             addViewController.tabBarItem.selectedImage = UIImage(systemName: "plus.circle.fill")
 
-            let profileViewController = UINavigationController(rootViewController: SignInVC())
+            let profileViewController = UINavigationController(rootViewController: ProfileVC())
             profileViewController.tabBarItem.title = "마이페이지"
             profileViewController.tabBarItem.image = UIImage(systemName: "person")
             profileViewController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")

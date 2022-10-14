@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52152B9028EC2D44009DE785 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52152B8F28EC2D44009DE785 /* Model.swift */; };
+		52152B9028EC2D44009DE785 /* PostsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52152B8F28EC2D44009DE785 /* PostsAPI.swift */; };
 		521B374328D33C0200F1DAE4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B374228D33C0200F1DAE4 /* ProfileVC.swift */; };
+		52307A2528F90D0500E43594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52307A2228F90D0500E43594 /* Assets.xcassets */; };
+		52307A2628F90D0500E43594 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 52307A2328F90D0500E43594 /* appstore.png */; };
+		52307A2728F90D0500E43594 /* playstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 52307A2428F90D0500E43594 /* playstore.png */; };
+		524D592728F845C500DD6081 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D592628F845C400DD6081 /* ProfileAPI.swift */; };
+		524D592928F8464300DD6081 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D592828F8464300DD6081 /* API.swift */; };
+		524D592C28F8DEFB00DD6081 /* AddAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D592B28F8DEFB00DD6081 /* AddAPI.swift */; };
+		524D592F28F8E04100DD6081 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D592E28F8E04100DD6081 /* AddVC.swift */; };
+		524D593128F8E53400DD6081 /* SignInAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D593028F8E53400DD6081 /* SignInAPI.swift */; };
+		524D593328F8E80D00DD6081 /* token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D593228F8E80D00DD6081 /* token.swift */; };
 		5266C98928BCCCA500B61B3B /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266C98828BCCCA500B61B3B /* FeedVC.swift */; };
 		5274614928D88CC6009427B2 /* testFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274614828D88CC6009427B2 /* testFile.swift */; };
 		5281CF6B28C8BF6100584BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6628C8BF6000584BE1 /* Assets.xcassets */; };
-		5281CF6C28C8BF6100584BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6828C8BF6000584BE1 /* Assets.xcassets */; };
-		5281CF6D28C8BF6100584BE1 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6928C8BF6000584BE1 /* appstore.png */; };
-		5281CF6E28C8BF6100584BE1 /* playstore.png in Resources */ = {isa = PBXBuildFile; fileRef = 5281CF6A28C8BF6000584BE1 /* playstore.png */; };
-		5293EBFB28BA7816003A8C06 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293EBFA28BA7816003A8C06 /* AddVC.swift */; };
 		52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D95A3828BF5E82007F7B2F /* CustomCell.swift */; };
 		52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA581E28B8413B007D7283 /* TabBarController.swift */; };
 		52EA582428B88568007D7283 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA582328B88568007D7283 /* SignUpVC.swift */; };
@@ -29,16 +34,21 @@
 /* Begin PBXFileReference section */
 		25F49518E24E2E3E0BC5F7A6 /* Pods-MenToMen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenToMen.release.xcconfig"; path = "Target Support Files/Pods-MenToMen/Pods-MenToMen.release.xcconfig"; sourceTree = "<group>"; };
 		4BA2227F3CBE68C87F040E18 /* Pods-MenToMen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenToMen.debug.xcconfig"; path = "Target Support Files/Pods-MenToMen/Pods-MenToMen.debug.xcconfig"; sourceTree = "<group>"; };
-		52152B8F28EC2D44009DE785 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		52152B8F28EC2D44009DE785 /* PostsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPI.swift; sourceTree = "<group>"; };
 		521B374128D1BD9B00F1DAE4 /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenToMen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521B374228D33C0200F1DAE4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		52307A2228F90D0500E43594 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52307A2328F90D0500E43594 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
+		52307A2428F90D0500E43594 /* playstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playstore.png; sourceTree = "<group>"; };
+		524D592628F845C400DD6081 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
+		524D592828F8464300DD6081 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		524D592B28F8DEFB00DD6081 /* AddAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAPI.swift; sourceTree = "<group>"; };
+		524D592E28F8E04100DD6081 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		524D593028F8E53400DD6081 /* SignInAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAPI.swift; sourceTree = "<group>"; };
+		524D593228F8E80D00DD6081 /* token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = token.swift; sourceTree = "<group>"; };
 		5266C98828BCCCA500B61B3B /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		5274614828D88CC6009427B2 /* testFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testFile.swift; sourceTree = "<group>"; };
 		5281CF6628C8BF6000584BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Assets.xcassets; sourceTree = "<group>"; };
-		5281CF6828C8BF6000584BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5281CF6928C8BF6000584BE1 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
-		5281CF6A28C8BF6000584BE1 /* playstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playstore.png; sourceTree = "<group>"; };
-		5293EBFA28BA7816003A8C06 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		52D95A3828BF5E82007F7B2F /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52EA581E28B8413B007D7283 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		52EA582328B88568007D7283 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -62,40 +72,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		52152B8D28EC2D14009DE785 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				52152B8F28EC2D44009DE785 /* Model.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		521B374428D33C8400F1DAE4 /* profile */ = {
 			isa = PBXGroup;
 			children = (
 				521B374228D33C0200F1DAE4 /* ProfileVC.swift */,
+				524D592628F845C400DD6081 /* ProfileAPI.swift */,
 			);
 			name = profile;
+			sourceTree = "<group>";
+		};
+		52307A2128F90D0500E43594 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				52307A2228F90D0500E43594 /* Assets.xcassets */,
+				52307A2328F90D0500E43594 /* appstore.png */,
+				52307A2428F90D0500E43594 /* playstore.png */,
+			);
+			path = AppIcons;
+			sourceTree = "<group>";
+		};
+		524D592A28F8DEE900DD6081 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				524D592B28F8DEFB00DD6081 /* AddAPI.swift */,
+				524D592E28F8E04100DD6081 /* AddVC.swift */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 		5266C98A28BCCCAB00B61B3B /* feed */ = {
 			isa = PBXGroup;
 			children = (
+				52152B8F28EC2D44009DE785 /* PostsAPI.swift */,
 				5266C98828BCCCA500B61B3B /* FeedVC.swift */,
 				52D95A3828BF5E82007F7B2F /* CustomCell.swift */,
 			);
 			path = feed;
-			sourceTree = "<group>";
-		};
-		5281CF6728C8BF6000584BE1 /* 앱 아이콘 */ = {
-			isa = PBXGroup;
-			children = (
-				5281CF6828C8BF6000584BE1 /* Assets.xcassets */,
-				5281CF6928C8BF6000584BE1 /* appstore.png */,
-				5281CF6A28C8BF6000584BE1 /* playstore.png */,
-			);
-			name = "앱 아이콘";
-			path = "../../../앱 아이콘";
 			sourceTree = "<group>";
 		};
 		52EA582228B884EF007D7283 /* SignUp */ = {
@@ -109,11 +121,12 @@
 		52EB707128B4D47100E5FD28 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				524D592828F8464300DD6081 /* API.swift */,
 				5266C98A28BCCCAB00B61B3B /* feed */,
 				52EB707228B4D47E00E5FD28 /* Auth */,
 				521B374428D33C8400F1DAE4 /* profile */,
 				52EA581E28B8413B007D7283 /* TabBarController.swift */,
-				5293EBFA28BA7816003A8C06 /* AddVC.swift */,
+				524D592A28F8DEE900DD6081 /* Add */,
 				5274614828D88CC6009427B2 /* testFile.swift */,
 			);
 			path = Presentation;
@@ -132,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				52EB706128B4D13000E5FD28 /* SignInVC.swift */,
+				524D593028F8E53400DD6081 /* SignInAPI.swift */,
+				524D593228F8E80D00DD6081 /* token.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -161,10 +176,9 @@
 				93C8265728B4CFA500B46604 /* AppDelegate.swift */,
 				93C8265928B4CFA500B46604 /* SceneDelegate.swift */,
 				93C8266228B4CFA600B46604 /* LaunchScreen.storyboard */,
-				5281CF6728C8BF6000584BE1 /* 앱 아이콘 */,
 				5281CF6628C8BF6000584BE1 /* Assets.xcassets */,
+				52307A2128F90D0500E43594 /* AppIcons */,
 				93C8266528B4CFA600B46604 /* Info.plist */,
-				52152B8D28EC2D14009DE785 /* Model */,
 				52EB707128B4D47100E5FD28 /* Presentation */,
 			);
 			path = MenToMen;
@@ -239,10 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5281CF6B28C8BF6100584BE1 /* Assets.xcassets in Resources */,
-				5281CF6D28C8BF6100584BE1 /* appstore.png in Resources */,
-				5281CF6C28C8BF6100584BE1 /* Assets.xcassets in Resources */,
+				52307A2628F90D0500E43594 /* appstore.png in Resources */,
+				52307A2528F90D0500E43594 /* Assets.xcassets in Resources */,
 				93C8266428B4CFA600B46604 /* LaunchScreen.storyboard in Resources */,
-				5281CF6E28C8BF6100584BE1 /* playstore.png in Resources */,
+				52307A2728F90D0500E43594 /* playstore.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,14 +309,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52152B9028EC2D44009DE785 /* Model.swift in Sources */,
-				5293EBFB28BA7816003A8C06 /* AddVC.swift in Sources */,
+				52152B9028EC2D44009DE785 /* PostsAPI.swift in Sources */,
+				524D592728F845C500DD6081 /* ProfileAPI.swift in Sources */,
+				524D592F28F8E04100DD6081 /* AddVC.swift in Sources */,
 				52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */,
 				93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */,
+				524D592928F8464300DD6081 /* API.swift in Sources */,
 				5274614928D88CC6009427B2 /* testFile.swift in Sources */,
+				524D593328F8E80D00DD6081 /* token.swift in Sources */,
 				521B374328D33C0200F1DAE4 /* ProfileVC.swift in Sources */,
 				52EA581F28B8413B007D7283 /* TabBarController.swift in Sources */,
+				524D593128F8E53400DD6081 /* SignInAPI.swift in Sources */,
 				93C8265A28B4CFA500B46604 /* SceneDelegate.swift in Sources */,
+				524D592C28F8DEFB00DD6081 /* AddAPI.swift in Sources */,
 				5266C98928BCCCA500B61B3B /* FeedVC.swift in Sources */,
 				52EA582428B88568007D7283 /* SignUpVC.swift in Sources */,
 				52EB706228B4D13000E5FD28 /* SignInVC.swift in Sources */,
