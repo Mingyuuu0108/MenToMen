@@ -17,13 +17,17 @@ class CustomCell: UITableViewCell {
     
     let userInfo = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = .systemFont(ofSize: 18, weight: .light)
+        $0.font = .systemFont(ofSize: 12, weight: .ultraLight)
     }
     
     let content = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = .systemFont(ofSize: 15, weight: .light)
         $0.numberOfLines = 2
+    }
+    
+    let postImage = UIImageView().then {
+        $0.backgroundColor = .tertiaryLabel
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -42,15 +46,17 @@ class CustomCell: UITableViewCell {
         [
             tagImage,
             userName,
-            content
+            userInfo,
+            content,
+            postImage
             
         ].forEach{ self.contentView.addSubview($0) }
         
         tagImage.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.left.equalToSuperview().offset(10)
-            $0.right.equalTo(self.snp.left).offset(34)
-            $0.bottom.equalToSuperview().offset(-68)
+            $0.left.equalToSuperview().offset(16)
+            $0.right.equalTo(self.snp.left).offset(44)
+            $0.bottom.equalToSuperview().offset(-58)
         }
         
         userName.snp.makeConstraints {
@@ -59,11 +65,23 @@ class CustomCell: UITableViewCell {
             $0.right.equalToSuperview().offset(-100)
         }
         
+        userInfo.snp.makeConstraints {
+            $0.top.equalTo(userName.snp.bottom).offset(2)
+            $0.left.equalTo(tagImage.snp.right).offset(10)
+        }
+        
         content.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalTo(tagImage.snp.right).offset(240)
             $0.bottom.equalToSuperview().offset(20)
+        }
+        
+        postImage.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(6)
+            $0.left.equalTo(content.snp.right).offset(10)
+            $0.right.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview().offset(-6)
         }
     }
     

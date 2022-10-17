@@ -8,9 +8,9 @@
 import Foundation
 
 struct ProfileData: Decodable {
+    let data: ProfileDatas
     let status: Int
     let message: String
-    let data: ProfileDatas
 }
 
 struct ProfileDatas: Decodable {

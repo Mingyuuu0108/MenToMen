@@ -17,17 +17,19 @@ class SignInVC: UIViewController {
     private let idTextField = UITextField().then {
         $0.borderStyle = .roundedRect
         $0.tintColor = .systemBackground
-        $0.placeholder = "ID를 입력해주세요!"
+        $0.placeholder = " ID를 입력해주세요!"
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.autocapitalizationType = .none
+        $0.borderStyle = .roundedRect
     }
     
     private let pwTextField = UITextField().then {
         $0.borderStyle = .roundedRect
         $0.tintColor = .systemBackground
-        $0.placeholder = "비밀번호를 입력해주세요! "
+        $0.placeholder = " 비밀번호를 입력해주세요! "
         $0.isSecureTextEntry = true
         $0.font = .systemFont(ofSize: 14, weight: .medium)
+        $0.borderStyle = .roundedRect
     }
     
     private let signInButton = UIButton().then {
@@ -36,12 +38,12 @@ class SignInVC: UIViewController {
         $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         $0.titleLabel?.textColor = .black
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 5.0
+        $0.layer.cornerRadius = 9.0
         $0.addTarget(self, action: #selector(TabSignInButton), for: .touchUpInside)
     }
     
     private let signInGuide = UILabel().then {
-        $0.text = "회원가입없이 도담계정으로 바로 로그인!"
+        $0.text = "회원가입없이 도담계정으로 바로 로그인 해보세요!"
         $0.alpha = 0.52
         $0.font = .systemFont(ofSize: 12.0, weight: .light)
         $0.sizeToFit()
@@ -130,13 +132,12 @@ class SignInVC: UIViewController {
     func setup() {
         
         let frame = self.view.safeAreaLayoutGuide.layoutFrame
-        
+                
         let textFieldSV = UIStackView(arrangedSubviews: [idTextField, pwTextField])
         textFieldSV.axis = .vertical
         textFieldSV.spacing = 10.0
         textFieldSV.distribution = .fillEqually
         textFieldSV.alignment = .center
-        
         
         [
             signInGuide,
@@ -159,8 +160,7 @@ class SignInVC: UIViewController {
         }
         
         signInGuide.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(100)
-            $0.right.equalToSuperview().offset(-100)
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(signInButton.snp.bottom).offset(8)
         }
         
@@ -181,3 +181,13 @@ class SignInVC: UIViewController {
     
 }
 
+extension UITextField {
+    func underlined(viewSize: CGFloat, color: UIColor) {
+        let border = CALayer()
+        let width = CGFloat(1)
+        border.borderColor = color.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height + 10, width: viewSize - 48, height: width)
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+    }
+}

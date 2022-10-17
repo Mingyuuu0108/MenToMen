@@ -47,7 +47,7 @@ class FeedVC:UIViewController, UITableViewDelegate {
         .responseData { (response) in
             switch response.result {
             case .success:
-                print("성공\n🔥")
+                print("성공!\n🔥")
                 
                 guard let value = response.value else { return }
                 guard let result = try? decoder.decode(PostData.self, from: value) else { return }
@@ -55,7 +55,7 @@ class FeedVC:UIViewController, UITableViewDelegate {
                 self.tableView.reloadData()
                 
             case .failure(let error):
-                print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
+                print("실패\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
         }
     }
@@ -74,7 +74,7 @@ extension FeedVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.datas.count
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
@@ -91,6 +91,9 @@ extension FeedVC: UITableViewDataSource {
         cell.userName.text = self.datas[indexPath.row].userName
         cell.userInfo.text = "\(grade!)학년 \(room!)반 \(number!)번"
         cell.content.text = self.datas[indexPath.row].content
+        
+        let url = URL(string: self.datas[indexPath.row].imgUrls?[0] ?? "")
+        cell.postImage.kf.setImage(with: url)
         
         switch self.datas[indexPath.row].tag {
         case "IOS":
@@ -154,6 +157,4 @@ private extension FeedVC {
     @objc func TabSearchButton() {
         print("검색")
     }
-    
-    
 }

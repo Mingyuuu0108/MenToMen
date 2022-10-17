@@ -12,5 +12,6 @@ target 'MenToMen' do
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'KeychainAccess'
+  pod 'SwiftyJSON'
 
 end
