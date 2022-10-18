@@ -7,4 +7,5 @@ import Foundation
 //MARK: 김종윤 url 1,2
 //public let API = "http://10.80.162.141:8080/api"
 public let API = "http://10.80.163.37:8080/api"
+//public let API = "http://10.80.163.163:8080/api"
 

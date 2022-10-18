@@ -2,42 +2,49 @@ import UIKit
 import Then
 import SnapKit
 import Alamofire
+import Kingfisher
 
 class ProfileVC: UIViewController {
     
-    var datas:[ProfileData] = []
+    var datas:[ProfileDatas] = []
     
     private let profileImage = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.cornerRadius = 32
-        $0.layer.borderWidth = 0.8
-        $0.backgroundColor = .black
-    }
-    
-    private let userName = UILabel().then {
-        $0.text = "test님, 환영합니다!"
-        $0.font = .systemFont(ofSize: 22, weight: .semibold)
+        $0.layer.borderWidth = 0.4
+        $0.backgroundColor = .systemBackground
     }
     
     private let userInfo = UILabel().then {
-        $0.text = "grade학년 room반 number번"
-        $0.font = .systemFont(ofSize: 14, weight: .light)
+        $0.text = "O학년 O반 O번"
+        $0.font = UIFont(name: "Pretendard-Light", size: 16.0)
     }
+    
+    private let userName = UILabel().then {
+        $0.text = "OOO님, 환영합니다!"
+        $0.font = UIFont(name: "Pretendard-Medium", size: 22.0)
+    }
+    
+    private let userEmail = UILabel().then {
+        $0.text = "OOOOOOO@mail.com"
+        $0.font = UIFont(name: "Pretendard-ExtraLight", size: 13.0)
+    }
+    
     
     private let logoutButton = UIButton().then {
         $0.setTitle("로그아웃", for: .normal)
-        $0.backgroundColor = .black
+        $0.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14.0, weight: .light)
         $0.titleLabel?.textAlignment = .center
         $0.addTarget(self, action: #selector(logout), for: .touchUpInside)
-        
     }
     
-    @objc func logout() {
-        let VC = SignInVC()
-        VC.modalPresentationStyle = .fullScreen
-        self.present(VC, animated: true, completion: nil)
-    }
+//    private lazy var tableView = UITableView().then {
+//        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
+//        $0.delegate = self
+//        $0.dataSource = self
+//        $0.rowHeight = 100
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +74,21 @@ class ProfileVC: UIViewController {
                     guard let value = response.value else { return }
                     guard let result = try? decoder.decode(ProfileData.self, from: value) else { return }
                     
+                    let grade = result.data.stdInfo.grade
+                    let room = result.data.stdInfo.room
+                    let number = result.data.stdInfo.number
+                    
+                    self.userName.text = "\(result.data.name)님, 환영합니다!"
+                    self.userInfo.text = "\(grade!)학년 \(room!)반 \(number!)번"
+                    self.userEmail.text = "\(result.data.email)"
+                    
+                    if result.data.profileImage != nil {
+                        let url = URL(string: result.data.profileImage!)
+                        self.profileImage.kf.setImage(with: url)
+                    } else {
+                        self.profileImage.image = UIImage(named: "profile")
+                    }
+                    
                     AF.request("\(API)/user/post",
                                method: .get,
                                encoding: URLEncoding.default,
@@ -80,7 +102,6 @@ class ProfileVC: UIViewController {
                             case .success:
                                 guard let value = response.value else { return }
                                 guard let result = try? decoder.decode(PostData.self, from: value) else { return }
-                                //                                self.datas = result.data
                             case .failure(let error):
                                 print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
                             }
@@ -97,6 +118,7 @@ class ProfileVC: UIViewController {
             profileImage,
             userName,
             userInfo,
+            userEmail,
             logoutButton
             
         ].forEach{ self.view.addSubview($0) }
@@ -109,7 +131,7 @@ class ProfileVC: UIViewController {
         }
         
         userInfo.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(26)
             $0.left.equalTo(profileImage.snp.right).offset(14)
             $0.bottom.equalTo(userInfo.snp.top).offset(20)
         }
@@ -120,12 +142,30 @@ class ProfileVC: UIViewController {
             $0.right.equalToSuperview()
             $0.bottom.equalTo(userName.snp.top).offset(20)
         }
-        //        logoutButton.snp.makeConstraints {
-        //            $0.top.equalTo(userName.snp.bottom).offset(10)
-        //            $0.left.equalToSuperview()
-        //            $0.right.equalToSuperview()
-        //            $0.bottom.equalToSuperview()
-        //        }
+        
+        userEmail.snp.makeConstraints {
+            $0.top.equalTo(userName.snp.bottom).offset(4)
+            $0.left.equalTo(profileImage.snp.right).offset(14)
+            $0.right.equalToSuperview()
+            $0.bottom.equalTo(userEmail.snp.top).offset(14)
+        }
+        
+        logoutButton.snp.makeConstraints {
+            $0.top.equalTo(userEmail.snp.bottom).offset(10)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalTo(logoutButton.snp.top).offset(20)
+        }
+    }
+    
+    @objc func logout() {
+        let alert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "로그아웃", style: .destructive, handler: {_ in
+            let VC = SignInVC()
+            VC.modalPresentationStyle = .fullScreen
+            self.present(VC, animated: true, completion: nil) }))
+        alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: {_ in print("") }))
+        present(alert, animated: true)
     }
     
 }
@@ -162,6 +202,12 @@ private extension ProfileVC {
     }
     
     @objc func TabBellButton() {
-        print("알람")
+        let alert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "로그아웃", style: .destructive, handler: {_ in
+            let VC = SignInVC()
+            VC.modalPresentationStyle = .fullScreen
+            self.present(VC, animated: true, completion: nil) }))
+        alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: {_ in print("") }))
+        present(alert, animated: true)
     }
 }

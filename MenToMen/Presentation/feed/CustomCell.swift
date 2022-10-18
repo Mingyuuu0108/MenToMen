@@ -11,22 +11,26 @@ class CustomCell: UITableViewCell {
     }
     
     let userName = UILabel().then {
+        $0.text = "OOO"
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = .systemFont(ofSize: 18, weight: .regular)
+        $0.font = UIFont(name: "Pretendard-Regular", size: 18.0)
     }
     
     let userInfo = UILabel().then {
+        $0.text = "O학년 O반 O번"
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = .systemFont(ofSize: 12, weight: .ultraLight)
+        $0.font = UIFont(name: "Pretendard-ExtraLight", size: 12.0)
     }
     
     let content = UILabel().then {
+        $0.text = "내용"
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = .systemFont(ofSize: 15, weight: .light)
+        $0.font = UIFont(name: "Pretendard-Light", size: 15.0)
         $0.numberOfLines = 2
     }
     
     let postImage = UIImageView().then {
+        $0.layer.cornerRadius = 4.0
         $0.backgroundColor = .systemBackground
     }
     
@@ -74,14 +78,14 @@ class CustomCell: UITableViewCell {
             $0.top.equalToSuperview().offset(10)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalTo(tagImage.snp.right).offset(240)
-            $0.bottom.equalToSuperview().offset(20)
+            $0.bottom.equalToSuperview().offset(16)
         }
         
         postImage.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(6)
-            $0.left.equalTo(content.snp.right).offset(10)
-            $0.right.equalToSuperview().offset(-10)
-            $0.bottom.equalToSuperview().offset(-6)
+            $0.top.equalToSuperview().offset(8)
+            $0.left.equalTo(content.snp.right).offset(12)
+            $0.right.equalToSuperview().offset(-12)
+            $0.bottom.equalToSuperview().offset(-8)
         }
     }
     
