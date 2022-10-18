@@ -61,14 +61,6 @@ class FeedVC:UIViewController, UITableViewDelegate {
     }
 }
 
-func checkResponse(_ response: DataResponse<Data, AFError>) {
-    if response.data == nil {
-        print("RESPONSE DATA IS NIL")
-    } else {
-        print(String(decoding: response.data!, as: UTF8.self))
-    }
-}
-
 extension FeedVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,8 +84,10 @@ extension FeedVC: UITableViewDataSource {
         cell.userInfo.text = "\(grade!)학년 \(room!)반 \(number!)번"
         cell.content.text = self.datas[indexPath.row].content
         
-        let url = URL(string: self.datas[indexPath.row].imgUrls?[0] ?? "")
-        cell.postImage.kf.setImage(with: url)
+        if self.datas[indexPath.row].imgUrls != nil {
+            let url = URL(string: self.datas[indexPath.row].imgUrls![0])
+            cell.postImage.kf.setImage(with: url)
+        }
         
         switch self.datas[indexPath.row].tag {
         case "IOS":

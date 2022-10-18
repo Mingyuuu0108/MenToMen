@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  MenToMen
-//
-//  Created by Mercen on 2022/08/23.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

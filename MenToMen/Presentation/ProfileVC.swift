@@ -1,12 +1,38 @@
 import UIKit
+import Then
+import SnapKit
 import Alamofire
-
-fileprivate let url = URL(string: "\(API)/user/my")
 
 class ProfileVC: UIViewController {
     
-    private let testButton = UIButton().then {
-        $0.setTitle("sex on the bitch", for: .normal)
+    var datas:[ProfileData] = []
+    private let profileImage = UIImageView().then {
+        $0.layer.cornerRadius = 40.0
+        $0.layer.borderWidth = 0.8
+        $0.layer.borderColor = UIColor.quaternaryLabel.cgColor
+    }
+    
+    private let userName = UILabel().then {
+        $0.text = "test님, 환영합니다!"
+        $0.font = .systemFont(ofSize: 22, weight: .semibold)
+    }
+    
+    private let userInfo = UILabel().then {
+        $0.text = "grade학년 room반 number번"
+        $0.font = .systemFont(ofSize: 22, weight: .semibold)
+    }
+    
+    private let logoutButton = UIButton().then {
+        $0.setTitle("로그아웃", for: .normal)
+        $0.backgroundColor = .black
+        $0.titleLabel?.font = .systemFont(ofSize: 14.0, weight: .light)
+        $0.addTarget(self, action: #selector(logout), for: .touchUpInside)
+    }
+    
+    @objc func logout() {
+        let VC = SignInVC()
+        VC.modalPresentationStyle = .fullScreen
+        self.present(VC, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -31,11 +57,12 @@ class ProfileVC: UIViewController {
                    interceptor: Requester()
         ) { $0.timeoutInterval = 5 }
             .validate()
-            .responseData { response in
+            .responseData { (response) in
                 switch response.result {
                 case .success:
                     guard let value = response.value else { return }
                     guard let result = try? decoder.decode(ProfileData.self, from: value) else { return }
+
                     AF.request("\(API)/user/post",
                                method: .get,
                                encoding: URLEncoding.default,
@@ -43,12 +70,13 @@ class ProfileVC: UIViewController {
                                interceptor: Requester()
                     ) { $0.timeoutInterval = 10 }
                         .validate()
-                        .responseData { response in
+                        .responseData { (response) in
                             print(checkStatus(response))
                             switch response.result {
                             case .success:
                                 guard let value = response.value else { return }
                                 guard let result = try? decoder.decode(PostData.self, from: value) else { return }
+//                                self.datas = result.data
                             case .failure(let error):
                                 print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
                             }
@@ -59,24 +87,32 @@ class ProfileVC: UIViewController {
             }
     }
     
-    @objc func TabTestButton() {
-        
-        let rootVC = SignInVC()
-        let VC = UINavigationController(rootViewController: rootVC)
-        self.present(VC, animated: true)
-    }
-    
     func setup() {
+                
         [
-            testButton
+            profileImage,
+            userName,
+            userInfo,
+            logoutButton
             
         ].forEach{ self.view.addSubview($0) }
         
-        testButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(400)
-            $0.bottom.equalToSuperview().offset(-400)
-            $0.left.equalToSuperview().offset(80)
-            $0.right.equalToSuperview().offset(-80)
+        profileImage.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            $0.left.equalToSuperview().offset(16)
+            $0.right.equalTo(80)
+        }
+        
+        userName.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
+        
+        logoutButton.snp.makeConstraints {
+            $0.top.equalTo(userName.snp.bottom).offset(10)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     

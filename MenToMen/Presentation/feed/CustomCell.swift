@@ -27,7 +27,7 @@ class CustomCell: UITableViewCell {
     }
     
     let postImage = UIImageView().then {
-        $0.backgroundColor = .tertiaryLabel
+        $0.backgroundColor = .systemBackground
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

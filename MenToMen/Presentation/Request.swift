@@ -12,6 +12,14 @@ func checkStatus(_ response: DataResponse<Data, AFError>) -> Int {
     return JSON(response.data!)["status"].int!
 }
 
+func checkResponse(_ response: DataResponse<Data, AFError>) {
+    if response.data == nil {
+        print("RESPONSE DATA IS NIL")
+    } else {
+        print(String(decoding: response.data!, as: UTF8.self))
+    }
+}
+
 final class Requester: RequestInterceptor {
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         guard urlRequest.url?.absoluteString.hasPrefix(API) == true,

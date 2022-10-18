@@ -73,6 +73,14 @@
 			name = profile;
 			sourceTree = "<group>";
 		};
+		524D2EFA28FD547C00DD4EC0 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				52EA581E28B8413B007D7283 /* TabBarController.swift */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
 		524D592A28F8DEE900DD6081 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,12 +104,12 @@
 			isa = PBXGroup;
 			children = (
 				524D592828F8464300DD6081 /* API.swift */,
+				5274614828D88CC6009427B2 /* Request.swift */,
 				5266C98A28BCCCAB00B61B3B /* feed */,
 				52EB707228B4D47E00E5FD28 /* Auth */,
 				521B374428D33C8400F1DAE4 /* profile */,
-				52EA581E28B8413B007D7283 /* TabBarController.swift */,
 				524D592A28F8DEE900DD6081 /* Add */,
-				5274614828D88CC6009427B2 /* Request.swift */,
+				524D2EFA28FD547C00DD4EC0 /* TabBar */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -109,19 +117,11 @@
 		52EB707228B4D47E00E5FD28 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				52EB707328B4D48600E5FD28 /* Sign */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		52EB707328B4D48600E5FD28 /* Sign */ = {
-			isa = PBXGroup;
-			children = (
 				52EB706128B4D13000E5FD28 /* SignInVC.swift */,
 				524D593028F8E53400DD6081 /* SignInAPI.swift */,
 				524D593228F8E80D00DD6081 /* token.swift */,
 			);
-			path = Sign;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		8EB2153CEE5A7073EA067A2F /* Pods */ = {
