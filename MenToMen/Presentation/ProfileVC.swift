@@ -6,10 +6,12 @@ import Alamofire
 class ProfileVC: UIViewController {
     
     var datas:[ProfileData] = []
+    
     private let profileImage = UIImageView().then {
-        $0.layer.cornerRadius = 40.0
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.layer.cornerRadius = 32
         $0.layer.borderWidth = 0.8
-        $0.layer.borderColor = UIColor.quaternaryLabel.cgColor
+        $0.backgroundColor = .black
     }
     
     private let userName = UILabel().then {
@@ -19,14 +21,16 @@ class ProfileVC: UIViewController {
     
     private let userInfo = UILabel().then {
         $0.text = "grade학년 room반 number번"
-        $0.font = .systemFont(ofSize: 22, weight: .semibold)
+        $0.font = .systemFont(ofSize: 14, weight: .light)
     }
     
     private let logoutButton = UIButton().then {
         $0.setTitle("로그아웃", for: .normal)
         $0.backgroundColor = .black
         $0.titleLabel?.font = .systemFont(ofSize: 14.0, weight: .light)
+        $0.titleLabel?.textAlignment = .center
         $0.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        
     }
     
     @objc func logout() {
@@ -62,7 +66,7 @@ class ProfileVC: UIViewController {
                 case .success:
                     guard let value = response.value else { return }
                     guard let result = try? decoder.decode(ProfileData.self, from: value) else { return }
-
+                    
                     AF.request("\(API)/user/post",
                                method: .get,
                                encoding: URLEncoding.default,
@@ -76,7 +80,7 @@ class ProfileVC: UIViewController {
                             case .success:
                                 guard let value = response.value else { return }
                                 guard let result = try? decoder.decode(PostData.self, from: value) else { return }
-//                                self.datas = result.data
+                                //                                self.datas = result.data
                             case .failure(let error):
                                 print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
                             }
@@ -88,7 +92,7 @@ class ProfileVC: UIViewController {
     }
     
     func setup() {
-                
+        
         [
             profileImage,
             userName,
@@ -98,22 +102,30 @@ class ProfileVC: UIViewController {
         ].forEach{ self.view.addSubview($0) }
         
         profileImage.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
-            $0.left.equalToSuperview().offset(16)
-            $0.right.equalTo(80)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(26)
+            $0.left.equalToSuperview().offset(20.0)
+            $0.right.equalTo(profileImage.snp.left).offset(64)
+            $0.bottom.equalTo(profileImage.snp.top).offset(64)
+        }
+        
+        userInfo.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.left.equalTo(profileImage.snp.right).offset(14)
+            $0.bottom.equalTo(userInfo.snp.top).offset(20)
         }
         
         userName.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
-        
-        logoutButton.snp.makeConstraints {
-            $0.top.equalTo(userName.snp.bottom).offset(10)
-            $0.left.equalToSuperview()
+            $0.top.equalTo(userInfo.snp.bottom).offset(4)
+            $0.left.equalTo(profileImage.snp.right).offset(14)
             $0.right.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(userName.snp.top).offset(20)
         }
+        //        logoutButton.snp.makeConstraints {
+        //            $0.top.equalTo(userName.snp.bottom).offset(10)
+        //            $0.left.equalToSuperview()
+        //            $0.right.equalToSuperview()
+        //            $0.bottom.equalToSuperview()
+        //        }
     }
     
 }

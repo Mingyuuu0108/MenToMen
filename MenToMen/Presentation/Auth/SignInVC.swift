@@ -5,7 +5,7 @@ import Alamofire
 import CryptoKit
 
 class SignInVC: UIViewController {
-    
+
     var invalidMessage: String = ""
     var request: Bool = false
     var success: Bool = false
@@ -103,11 +103,6 @@ class SignInVC: UIViewController {
                                     let VC = TabBarController()
                                     VC.modalPresentationStyle = .fullScreen
                                     self.present(VC, animated: true, completion: nil)
-                                } else {
-                                    let alert = UIAlertController(title: "실패", message: "로그인 후 이용가능", preferredStyle: UIAlertController.Style.alert)
-                                    let okAction = UIAlertAction(title: "확인", style: .default)
-                                    alert.addAction(okAction)
-                                    self.present(alert, animated: true, completion: nil)
                                 }
                             case .failure:
                                 self.toggleFailure(0)
@@ -115,9 +110,17 @@ class SignInVC: UIViewController {
                         }
                 case .failure(let error):
                     print("에러 \(error)")
+                    self.errorAlert()
                     
                 }
             }
+    }
+    
+    func errorAlert() {
+        let alert = UIAlertController(title: "실패", message: "알맞지 않은 ID, 비밀번호 입니다.", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
