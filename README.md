@@ -1,7 +1,2 @@
-# Men_To_Men
-uikit
-  pod 'SnapKit'
-  pod 'Then'
-  pod 'CryptoSwift'
-  pod 'Alamofire'
-  pod 'Kingfisher'
+# MentoMen
+멘토와 멘티를 이어주는 서비스
