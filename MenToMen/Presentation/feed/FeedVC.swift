@@ -8,7 +8,6 @@ fileprivate let url = URL(string: "\(API)/post/read-all")
 
 class FeedVC:UIViewController, UITableViewDelegate {
     
-    var data: [PostData] = []
     var datas: [PostDatas] = []
     
     private lazy var tableView = UITableView().then {

@@ -6,30 +6,30 @@ class Cell: UITableViewCell {
 
     static let identifier = "CustomCell"
 
-    private let tagImage = UIImageView().then {
+    let tagImage = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private let userName = UILabel().then {
+    let userName = UILabel().then {
         $0.text = "OOO"
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont(name: "Pretendard-Regular", size: 18.0)
     }
 
-    private let userInfo = UILabel().then {
+    let userInfo = UILabel().then {
         $0.text = "O학년 O반 O번"
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont(name: "Pretendard-ExtraLight", size: 12.0)
     }
 
-    private  let content = UILabel().then {
+    let content = UILabel().then {
         $0.text = "내용"
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = UIFont(name: "Pretendard-Light", size: 15.0)
         $0.numberOfLines = 2
     }
 
-    private let postImage = UIImageView().then {
+    let postImage = UIImageView().then {
         $0.layer.cornerRadius = 4.0
         $0.backgroundColor = .systemBackground
     }

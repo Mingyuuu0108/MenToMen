@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
         homeViewController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
         
         let addViewController = UINavigationController(rootViewController: AddVC())
-        addViewController.tabBarItem.title = "추가"
+        addViewController.tabBarItem.title = "글쓰기"
         addViewController.tabBarItem.image = UIImage(systemName: "plus.circle")
         addViewController.tabBarItem.selectedImage = UIImage(systemName: "plus.circle.fill")
         

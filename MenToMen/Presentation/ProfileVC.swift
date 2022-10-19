@@ -4,9 +4,12 @@ import SnapKit
 import Alamofire
 import Kingfisher
 
-class ProfileVC: UIViewController {
+fileprivate let url = URL(string: "\(API)/post/read-all")
+
+class ProfileVC: UIViewController, UITableViewDelegate {
     
     var datas:[ProfileDatas] = []
+    var data:[PostDatas] = []
     
     private let profileImage = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -30,21 +33,17 @@ class ProfileVC: UIViewController {
         $0.font = UIFont(name: "Pretendard-ExtraLight", size: 13.0)
     }
     
-    
-    private let logoutButton = UIButton().then {
-        $0.setTitle("로그아웃", for: .normal)
-        $0.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1), for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 14.0, weight: .light)
-        $0.titleLabel?.textAlignment = .center
-        $0.addTarget(self, action: #selector(logout), for: .touchUpInside)
+    private let myPostLabel = UILabel().then {
+        $0.text = "내가 올린 게시물"
+        $0.font = UIFont(name: "Pretendard-SemiBold", size: 20.0)
     }
     
-//    private lazy var tableView = UITableView().then {
-//        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
-//        $0.delegate = self
-//        $0.dataSource = self
-//        $0.rowHeight = 100
-//    }
+    private lazy var tableView = UITableView().then {
+        $0.register(Cell.self, forCellReuseIdentifier: Cell.identifier)
+        $0.delegate = self
+        $0.dataSource = self
+        $0.rowHeight = 100
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +101,9 @@ class ProfileVC: UIViewController {
                             case .success:
                                 guard let value = response.value else { return }
                                 guard let result = try? decoder.decode(PostData.self, from: value) else { return }
+                                self.data = result.data
+                                self.tableView.reloadData()
+                                
                             case .failure(let error):
                                 print("통신 오류!\nCode:\(error._code), Message: \(error.errorDescription!)")
                             }
@@ -119,7 +121,8 @@ class ProfileVC: UIViewController {
             userName,
             userInfo,
             userEmail,
-            logoutButton
+            myPostLabel,
+            tableView
             
         ].forEach{ self.view.addSubview($0) }
         
@@ -150,15 +153,22 @@ class ProfileVC: UIViewController {
             $0.bottom.equalTo(userEmail.snp.top).offset(18)
         }
         
-        logoutButton.snp.makeConstraints {
-            $0.top.equalTo(userEmail.snp.bottom).offset(10)
+        myPostLabel.snp.makeConstraints {
+            $0.top.equalTo(profileImage.snp.bottom).offset(10)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+            $0.bottom.equalTo(myPostLabel.snp.top).offset(20)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(myPostLabel.snp.bottom).offset(4)
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
-            $0.bottom.equalTo(logoutButton.snp.top).offset(20)
+            $0.bottom.equalToSuperview()
         }
     }
     
-    @objc func logout() {
+    func logout() {
         let alert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "로그아웃", style: .destructive, handler: {_ in
             let VC = SignInVC()
@@ -167,7 +177,48 @@ class ProfileVC: UIViewController {
         alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: {_ in print("") }))
         present(alert, animated: true)
     }
+}
+
+
+extension ProfileVC: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath) as! Cell
+        cell.selectionStyle = .none
+        
+        let grade = self.data[indexPath.row].stdInfo.grade
+        let room = self.data[indexPath.row].stdInfo.room
+        let number = self.data[indexPath.row].stdInfo.number
+        
+        cell.userName.text = self.data[indexPath.row].userName
+        cell.userInfo.text = "\(grade!)학년 \(room!)반 \(number!)번"
+        cell.content.text = self.data[indexPath.row].content
+        
+        if self.data[indexPath.row].imgUrls != nil {
+            let url = URL(string: self.data[indexPath.row].imgUrls![0])
+            cell.postImage.kf.setImage(with: url)
+        }
+        
+        switch self.data[indexPath.row].tag {
+        case "IOS":
+            cell.tagImage.image = UIImage(named: "iOS")
+        case "WEB":
+            cell.tagImage.image = UIImage(named: "Web")
+        case "SERVER":
+            cell.tagImage.image = UIImage(named: "Server")
+        case "ANDROID":
+            cell.tagImage.image = UIImage(named: "Android")
+        default:
+            cell.tagImage.image = UIImage(named: "Design")
+        }
+        
+        return cell
+    }
 }
 
 private extension ProfileVC {
