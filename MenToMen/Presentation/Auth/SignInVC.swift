@@ -15,21 +15,21 @@ class SignInVC: UIViewController {
     }
     
     private let idTextField = UITextField().then {
-        $0.borderStyle = .roundedRect
         $0.tintColor = .systemBackground
         $0.placeholder = " ID를 입력해주세요!"
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.autocapitalizationType = .none
         $0.borderStyle = .roundedRect
+        $0.clearButtonMode = .always
     }
     
     private let pwTextField = UITextField().then {
-        $0.borderStyle = .roundedRect
         $0.tintColor = .systemBackground
         $0.placeholder = " 비밀번호를 입력해주세요! "
         $0.isSecureTextEntry = true
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.borderStyle = .roundedRect
+        $0.clearButtonMode = .always
     }
     
     private let signInButton = UIButton().then {

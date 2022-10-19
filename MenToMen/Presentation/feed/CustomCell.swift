@@ -39,7 +39,7 @@ class CustomCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 16.0, left: 16, bottom: 16, right: 16))
 
         backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.15)
-        layer.cornerRadius = 8
+//        layer.cornerRadius = 8
         layer.borderWidth = 0.25
         
         autoLayout()
@@ -83,8 +83,8 @@ class CustomCell: UITableViewCell {
         
         postImage.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
-            $0.left.equalTo(content.snp.right).offset(12)
-            $0.right.equalToSuperview().offset(-12)
+            $0.left.equalTo(content.snp.right).offset(16)
+            $0.right.equalToSuperview().offset(-8)
             $0.bottom.equalToSuperview().offset(-8)
         }
     }

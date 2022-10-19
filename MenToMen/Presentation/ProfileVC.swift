@@ -124,7 +124,7 @@ class ProfileVC: UIViewController {
         ].forEach{ self.view.addSubview($0) }
         
         profileImage.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(26)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(28)
             $0.left.equalToSuperview().offset(20.0)
             $0.right.equalTo(profileImage.snp.left).offset(64)
             $0.bottom.equalTo(profileImage.snp.top).offset(64)
@@ -137,7 +137,7 @@ class ProfileVC: UIViewController {
         }
         
         userName.snp.makeConstraints {
-            $0.top.equalTo(userInfo.snp.bottom).offset(4)
+            $0.top.equalTo(userInfo.snp.bottom).offset(2)
             $0.left.equalTo(profileImage.snp.right).offset(14)
             $0.right.equalToSuperview()
             $0.bottom.equalTo(userName.snp.top).offset(20)
@@ -147,7 +147,7 @@ class ProfileVC: UIViewController {
             $0.top.equalTo(userName.snp.bottom).offset(4)
             $0.left.equalTo(profileImage.snp.right).offset(14)
             $0.right.equalToSuperview()
-            $0.bottom.equalTo(userEmail.snp.top).offset(14)
+            $0.bottom.equalTo(userEmail.snp.top).offset(18)
         }
         
         logoutButton.snp.makeConstraints {
@@ -185,7 +185,7 @@ private extension ProfileVC {
         widthConstraint.isActive = true
         navigationItem.leftBarButtonItem = imageItem
         
-        let bellButtonImage = UIImage(systemName: "bell")!
+        let bellButtonImage = UIImage(systemName: "rectangle.portrait.and.arrow.right")!
         let bellButton = UIButton(frame: CGRect(x: 0, y: 0, width: bellButtonImage.size.width, height: bellButtonImage.size.height))
         bellButton.setImage(bellButtonImage, for: .normal)
         bellButton.addTarget(self, action: #selector(TabBellButton), for: .touchUpInside)

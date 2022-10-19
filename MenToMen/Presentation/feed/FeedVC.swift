@@ -79,10 +79,6 @@ extension FeedVC: UITableViewDataSource {
         let grade = self.datas[indexPath.row].stdInfo.grade
         let room = self.datas[indexPath.row].stdInfo.room
         let number = self.datas[indexPath.row].stdInfo.number
-        let timeData = self.datas[indexPath.row].createDateTime!
-//        timeData.toDate()
-//        let time = Date(timeInterval: <#T##TimeInterval#>, since: <#T##Date#>))
-//        print(time.relate)
         
         cell.userName.text = self.datas[indexPath.row].userName
         cell.userInfo.text = "\(grade!)학년 \(room!)반 \(number!)번"
