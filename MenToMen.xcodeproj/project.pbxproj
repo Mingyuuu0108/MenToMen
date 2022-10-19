@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		52152B9028EC2D44009DE785 /* PostsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52152B8F28EC2D44009DE785 /* PostsAPI.swift */; };
 		521B374328D33C0200F1DAE4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B374228D33C0200F1DAE4 /* ProfileVC.swift */; };
-		522D04B028FFA8D900D42F35 /* AppIcons in Resources */ = {isa = PBXBuildFile; fileRef = 522D04AF28FFA8D900D42F35 /* AppIcons */; };
+		522D04B228FFB74B00D42F35 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D04B128FFB74B00D42F35 /* Cell.swift */; };
 		524D592728F845C500DD6081 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D592628F845C400DD6081 /* ProfileAPI.swift */; };
 		524D592928F8464300DD6081 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D592828F8464300DD6081 /* API.swift */; };
 		524D592C28F8DEFB00DD6081 /* AddAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524D592B28F8DEFB00DD6081 /* AddAPI.swift */; };
@@ -43,7 +43,7 @@
 		52152B8F28EC2D44009DE785 /* PostsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPI.swift; sourceTree = "<group>"; };
 		521B374128D1BD9B00F1DAE4 /* MenToMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenToMen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		521B374228D33C0200F1DAE4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		522D04AF28FFA8D900D42F35 /* AppIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcons; path = ../../../../Downloads/AppIcons; sourceTree = "<group>"; };
+		522D04B128FFB74B00D42F35 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		524D592628F845C400DD6081 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
 		524D592828F8464300DD6081 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		524D592B28F8DEFB00DD6081 /* AddAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAPI.swift; sourceTree = "<group>"; };
@@ -89,6 +89,7 @@
 			children = (
 				521B374228D33C0200F1DAE4 /* ProfileVC.swift */,
 				524D592628F845C400DD6081 /* ProfileAPI.swift */,
+				522D04B128FFB74B00D42F35 /* Cell.swift */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -185,7 +186,6 @@
 				93C8265728B4CFA500B46604 /* AppDelegate.swift */,
 				93C8265928B4CFA500B46604 /* SceneDelegate.swift */,
 				93C8266228B4CFA600B46604 /* LaunchScreen.storyboard */,
-				522D04AF28FFA8D900D42F35 /* AppIcons */,
 				5281CF6628C8BF6000584BE1 /* Assets.xcassets */,
 				93C8266528B4CFA600B46604 /* Info.plist */,
 				529E11B228FE889300F4E129 /* Font */,
@@ -275,7 +275,6 @@
 				529E11BE28FE88A100F4E129 /* Pretendard-SemiBold.otf in Resources */,
 				529E11BF28FE88A100F4E129 /* Pretendard-Black.otf in Resources */,
 				529E11BC28FE88A100F4E129 /* Pretendard-Thin.otf in Resources */,
-				522D04B028FFA8D900D42F35 /* AppIcons in Resources */,
 				529E11C128FE88A100F4E129 /* Pretendard-Medium.otf in Resources */,
 				529E11C328FE88A100F4E129 /* Pretendard-ExtraLight.otf in Resources */,
 			);
@@ -335,6 +334,7 @@
 				524D592F28F8E04100DD6081 /* AddVC.swift in Sources */,
 				52D95A3928BF5E82007F7B2F /* CustomCell.swift in Sources */,
 				93C8265828B4CFA500B46604 /* AppDelegate.swift in Sources */,
+				522D04B228FFB74B00D42F35 /* Cell.swift in Sources */,
 				524D592928F8464300DD6081 /* API.swift in Sources */,
 				5274614928D88CC6009427B2 /* Request.swift in Sources */,
 				524D593328F8E80D00DD6081 /* token.swift in Sources */,
