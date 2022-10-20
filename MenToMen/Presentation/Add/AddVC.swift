@@ -20,38 +20,38 @@ class AddVC: UIViewController {
         $0.distribution = .fillEqually
     }
     
-    private let designButton = UIButton().then {
+    private lazy var designButton = UIButton().then {
         $0.setImage(UIImage(named: "B1"), for: .normal)
         $0.addTarget(self, action: #selector(tabDesignButton), for: .touchUpInside)
     }
     @objc func tabDesignButton() { tag = "DESIGN" }
     
-    private let webButton = UIButton().then {
+    private lazy var webButton = UIButton().then {
         $0.setImage(UIImage(named: "B2"), for: .normal)
         $0.addTarget(self, action: #selector(tabWebButton), for: .touchUpInside)
     }
     @objc func tabWebButton() { tag = "WEB" }
     
-    private let serverButton = UIButton().then {
+    private lazy var serverButton = UIButton().then {
         $0.setImage(UIImage(named: "B3"), for: .normal)
         $0.addTarget(self, action: #selector(tabServerButton), for: .touchUpInside)
     }
     @objc func tabServerButton() { tag = "SERVER" }
     
-    private let androidButton = UIButton().then {
+    private lazy var androidButton = UIButton().then {
         $0.setImage(UIImage(named: "B4"), for: .normal)
         $0.addTarget(self, action: #selector(tabAndroidButton), for: .touchUpInside)
     }
     @objc func tabAndroidButton() { tag = "ANDROID" }
     
-    private let iOSButton = UIButton().then {
+    private lazy var iOSButton = UIButton().then {
         $0.setImage(UIImage(named: "B5"), for: .normal)
         $0.addTarget(self, action: #selector(tabiOSButton), for: .touchUpInside)
     }
     @objc func tabiOSButton() { tag = "IOS" }
     
     
-    private let addPostButton = UIButton().then {
+    private lazy var addPostButton = UIButton().then {
         $0.backgroundColor = UIColor(red: 0.2549, green: 0.3608, blue: 0.949, alpha: 1.0)
         $0.setTitle("멘토 요청하기", for: .normal)
         $0.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 16.0)

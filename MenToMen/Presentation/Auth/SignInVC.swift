@@ -32,7 +32,7 @@ class SignInVC: UIViewController {
         $0.clearButtonMode = .always
     }
     
-    private let signInButton = UIButton().then {
+    private lazy var signInButton = UIButton().then {
         $0.backgroundColor = UIColor(red: 0.2549, green: 0.3608, blue: 0.949, alpha: 1.0)
         $0.setTitle("Dauth로 로그인", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
