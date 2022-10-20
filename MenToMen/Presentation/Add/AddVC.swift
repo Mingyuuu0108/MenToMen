@@ -3,7 +3,7 @@ import Then
 import SnapKit
 import Alamofire
 
-class AddVC: UIViewController, ConstraintRelatableTarget {
+class AddVC: UIViewController {
     
     var tag:String = ""
     var data:PostDatas?
@@ -87,10 +87,22 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
     
     func postAlert() {
         let alert = UIAlertController(title: "성공!", message: "멘토 요청이 성공적으로 되었습니다!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
+        alert.addAction(UIAlertAction(title: "확인", style: .default ,handler: {_ in
             let VC = TabBarController()
             VC.modalPresentationStyle = .fullScreen
             self.present(VC, animated: true, completion: nil) }))
+        present(alert, animated: true)
+    }
+    
+    func noTagAlert() {
+        let alert = UIAlertController(title: "실패!", message: "태그를 선택하지 않았습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func noContentsAlert() {
+        let alert = UIAlertController(title: "실패!", message: "글을 작성하지 않았습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
         present(alert, animated: true)
     }
     
@@ -100,7 +112,13 @@ class AddVC: UIViewController, ConstraintRelatableTarget {
         if data != nil {
             reqParam["postId"] = data!.postId
         }
-        submit(reqParam)
+        if contentTextField.text! != "" && tag != "" {
+            submit(reqParam)
+        } else if contentTextField.text! == "" {
+            self.noContentsAlert()
+        } else if tag == "" {
+            self.noTagAlert()
+        }
     }
     
     private func addKeyboardNotification() {

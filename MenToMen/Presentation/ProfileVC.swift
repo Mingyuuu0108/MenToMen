@@ -127,14 +127,14 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         ].forEach{ self.view.addSubview($0) }
         
         profileImage.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(28)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(18)
             $0.left.equalToSuperview().offset(20.0)
             $0.right.equalTo(profileImage.snp.left).offset(64)
             $0.bottom.equalTo(profileImage.snp.top).offset(64)
         }
         
         userInfo.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(26)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(18)
             $0.left.equalTo(profileImage.snp.right).offset(14)
             $0.bottom.equalTo(userInfo.snp.top).offset(20)
         }
@@ -154,14 +154,14 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         }
         
         myPostLabel.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(10)
+            $0.top.equalTo(profileImage.snp.bottom).offset(16)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
             $0.bottom.equalTo(myPostLabel.snp.top).offset(20)
         }
         
         tableView.snp.makeConstraints {
-            $0.top.equalTo(myPostLabel.snp.bottom).offset(4)
+            $0.top.equalTo(myPostLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -202,6 +202,8 @@ extension ProfileVC: UITableViewDataSource {
         if self.data[indexPath.row].imgUrls != nil {
             let url = URL(string: self.data[indexPath.row].imgUrls![0])
             cell.postImage.kf.setImage(with: url)
+        } else {
+            cell.postImage.image = UIImage(named: "")
         }
         
         switch self.data[indexPath.row].tag {
