@@ -15,7 +15,6 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.cornerRadius = 32
         $0.layer.borderWidth = 0.4
-        $0.backgroundColor = .systemBackground
     }
     
     private let userInfo = UILabel().then {
@@ -43,6 +42,7 @@ class ProfileVC: UIViewController, UITableViewDelegate {
         $0.delegate = self
         $0.dataSource = self
         $0.rowHeight = 100
+        $0.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.08)
     }
     
     override func viewDidLoad() {
@@ -183,7 +183,21 @@ class ProfileVC: UIViewController, UITableViewDelegate {
 extension ProfileVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.data.count
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.2
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -191,22 +205,22 @@ extension ProfileVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath) as! Cell
         cell.selectionStyle = .none
         
-        let grade = self.data[indexPath.row].stdInfo.grade
-        let room = self.data[indexPath.row].stdInfo.room
-        let number = self.data[indexPath.row].stdInfo.number
+        let grade = self.data[indexPath.section].stdInfo.grade
+        let room = self.data[indexPath.section].stdInfo.room
+        let number = self.data[indexPath.section].stdInfo.number
         
-        cell.userName.text = self.data[indexPath.row].userName
+        cell.userName.text = self.data[indexPath.section].userName
         cell.userInfo.text = "\(grade!)학년 \(room!)반 \(number!)번"
-        cell.content.text = self.data[indexPath.row].content
+        cell.content.text = self.data[indexPath.section].content
         
-        if self.data[indexPath.row].imgUrls != nil {
-            let url = URL(string: self.data[indexPath.row].imgUrls![0])
+        if self.data[indexPath.section].imgUrls != nil {
+            let url = URL(string: self.data[indexPath.section].imgUrls![0])
             cell.postImage.kf.setImage(with: url)
         } else {
             cell.postImage.image = UIImage(named: "")
         }
         
-        switch self.data[indexPath.row].tag {
+        switch self.data[indexPath.section].tag {
         case "IOS":
             cell.tagImage.image = UIImage(named: "iOS")
         case "WEB":
