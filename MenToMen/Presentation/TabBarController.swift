@@ -7,7 +7,7 @@ class TabBarController: UITabBarController {
         
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        tabBar.backgroundColor = .systemBackground
         
         let homeViewController = UINavigationController(rootViewController: FeedVC())
         homeViewController.tabBarItem.title = "홈화면"

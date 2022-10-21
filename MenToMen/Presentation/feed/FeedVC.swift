@@ -15,7 +15,7 @@ class FeedVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         $0.delegate = self
         $0.dataSource = self
         $0.rowHeight = 100
-        $0.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.08)
+        $0.backgroundColor = .clear
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,8 +75,8 @@ class FeedVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         view.addSubview(tableView)
         tableView.snp.makeConstraints{
             $0.top.equalTo(self.view)
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.left.equalToSuperview().offset(10)
+            $0.right.equalToSuperview().offset(-10)
             $0.bottom.equalTo(self.view)
         }
     }
@@ -86,6 +86,7 @@ class FeedVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         setuptableView()
         setupNavigationBar()
+        view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.08)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,6 +124,11 @@ class FeedVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
 private extension FeedVC {
     
     func setupNavigationBar() {
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = .systemBackground
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         
         let logoImage = UIImage.init(named: "MTMLogo2")
         let logoImageView = UIImageView.init(image: logoImage)

@@ -38,7 +38,7 @@ class CustomCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setup()
-        layer.cornerRadius = 20
+        layer.borderWidth = 0.05
     }
     
     private func setup() {
@@ -71,17 +71,17 @@ class CustomCell: UITableViewCell {
         }
         
         content.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(18)
-            $0.left.equalToSuperview().offset(20)
-            $0.right.equalTo(tagImage.snp.right).offset(240)
-            $0.bottom.equalToSuperview().offset(12)
+            $0.top.equalToSuperview().offset(36)
+            $0.left.equalToSuperview().offset(16)
+            $0.right.equalTo(content.snp.left).offset(240)
+            $0.bottom.equalToSuperview().offset(-2)
         }
         
         postImage.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(8)
+            $0.top.equalToSuperview().offset(12)
             $0.left.equalTo(content.snp.right).offset(16)
-            $0.right.equalToSuperview().offset(-8)
-            $0.bottom.equalToSuperview().offset(-8)
+            $0.right.equalToSuperview().offset(-12)
+            $0.bottom.equalToSuperview().offset(-12)
         }
     }
     
