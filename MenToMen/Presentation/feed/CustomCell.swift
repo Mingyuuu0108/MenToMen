@@ -4,7 +4,23 @@ import Then
 
 class CustomCell: UITableViewCell {
     
+    var cellButtonAction : (() -> ())?
+
     static let identifier = "CustomCell"
+    
+    let cellButton = UIButton().then {
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 8
+        $0.addTarget(self, action: #selector(TabCell), for: .touchUpInside)
+    }
+    
+    @objc func TabCell() {
+        let VC = UIViewController()
+        VC.modalPresentationStyle = .fullScreen
+//        self.present(VC, animated: true)
+        print("==")
+        cellButtonAction?()
+    }
     
     let tagImage = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -42,8 +58,11 @@ class CustomCell: UITableViewCell {
     }
     
     private func setup() {
+        
+        backgroundColor = .clear
 
         [
+            cellButton,
             tagImage,
             userName,
             userInfo,
@@ -51,10 +70,17 @@ class CustomCell: UITableViewCell {
             postImage
             
         ].forEach{ self.contentView.addSubview($0) }
+
+        cellButton.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.equalToSuperview().offset(12)
+            $0.right.equalToSuperview().offset(-12)
+            $0.bottom.equalToSuperview()
+        }
         
         tagImage.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.left.equalToSuperview().offset(16)
+            $0.left.equalTo(cellButton.snp.left).offset(12)
             $0.right.equalTo(tagImage.snp.left).offset(28)
             $0.bottom.equalTo(tagImage.snp.top).offset(40)
         }
@@ -72,15 +98,15 @@ class CustomCell: UITableViewCell {
         
         content.snp.makeConstraints {
             $0.top.equalToSuperview().offset(36)
-            $0.left.equalToSuperview().offset(16)
+            $0.left.equalTo(cellButton.snp.left).offset(12)
             $0.right.equalTo(content.snp.left).offset(240)
             $0.bottom.equalToSuperview().offset(-2)
         }
         
         postImage.snp.makeConstraints {
             $0.top.equalToSuperview().offset(12)
-            $0.left.equalTo(content.snp.right).offset(16)
-            $0.right.equalToSuperview().offset(-12)
+            $0.left.equalTo(content.snp.right).offset(12)
+            $0.right.equalTo(cellButton.snp.right).offset(-12)
             $0.bottom.equalToSuperview().offset(-12)
         }
     }

@@ -5,6 +5,12 @@ class UserCell: UITableViewCell {
     
     static let identifier = "UserCustomCell"
     
+    let cellButton = UIButton().then {
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 12
+        $0.addTarget(self, action: #selector(TabCell), for: .touchUpInside)
+    }
+    
     let profileImage = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.layer.cornerRadius = 32
@@ -44,9 +50,17 @@ class UserCell: UITableViewCell {
             userName,
             userInfo,
             userEmail,
-            myPostLabel
+            myPostLabel,
+            cellButton
             
         ].forEach{ self.contentView.addSubview($0) }
+        
+        cellButton.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.equalToSuperview().offset(6)
+            $0.right.equalToSuperview().offset(-6)
+            $0.bottom.equalToSuperview()
+        }
         
         profileImage.snp.makeConstraints {
             $0.top.equalTo(contentView.safeAreaLayoutGuide).offset(18)

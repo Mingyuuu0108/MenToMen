@@ -57,7 +57,7 @@ class FeedVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch self.datas[indexPath.section].tag {
         case "IOS":
             cell.tagImage.image = UIImage(named: "iOS")
-        case "WEB":
+        case "WEB":7
             cell.tagImage.image = UIImage(named: "Web")
         case "SERVER":
             cell.tagImage.image = UIImage(named: "Server")
@@ -75,8 +75,8 @@ class FeedVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         view.addSubview(tableView)
         tableView.snp.makeConstraints{
             $0.top.equalTo(self.view)
-            $0.left.equalToSuperview().offset(10)
-            $0.right.equalToSuperview().offset(-10)
+            $0.left.equalToSuperview().offset(6)
+            $0.right.equalToSuperview().offset(-6)
             $0.bottom.equalTo(self.view)
         }
     }
@@ -87,6 +87,7 @@ class FeedVC:UIViewController, UITableViewDelegate, UITableViewDataSource {
         setuptableView()
         setupNavigationBar()
         view.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.08)
+        tableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
